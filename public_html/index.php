@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>Only git</title>
 <style>
 .whitemark{
@@ -11,7 +10,10 @@ border-radius:10px;
 background-color:white;
 border: 1px solid black;
 }
-#RadioStyle>input[type="radio"] + label>img,input[type="radio"],input[type="radio"]:checked + label>div.whitemark{
+
+input + label>img,
+input[type="radio"],
+input:checked + label>div.darkmark{
 	display:none;
 }
 #RadioStyle>input[type="radio"]:checked + label>img{
@@ -30,15 +32,14 @@ window.onload=function(){
 <hr>
 Checkbox swith<br>
 <div id="RadioStyle">
-	<input type="radio" id="by" name="country" /><label  for="by"><div class="whitemark"></div><img src="http://git/public_html/check-mark.png"/>BY</label><br>
-
-	<input type="radio" id="ua" name="country"/><label for="ua"><div class="whitemark"></div><img src="http://git/public_html/check-mark.png"/>UA</label><br>
-
+<input type="radio" id="by" name="country" checked/><label  for="by"><div class="whitemark"></div><img src="http://git/public_html/check-mark.png"/>BY</label><br>
+<input type="radio" id="ua" name="country"/><label for="ua"><div class="whitemark"></div><img src="http://git/public_html/check-mark.png"/>UA</label><br>
 <a id="popupbutton" href="ya.ru"><button>GO</button></a>
 </div>
 <hr>
 <a href="max.html">Max file</a>
 <a href="Ardzhuna.html">Ardzhuna file</a>
+<div>Limitrof block</div>
 </body>
 </html>
 
