@@ -42,7 +42,7 @@ Checkbox swith<br>
 
 <div style="width:300px; border: 1px solid green;height:100px;"></div>
 <div>Limitrof block</div>
-<span>BHIMA</span>
+<h1><span>BHIMA</span></h1>
 
 </body>
 </html>
