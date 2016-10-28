@@ -5,6 +5,8 @@
 </head>
 <body>
 1234
+<a href="max.html">Max file</a>
+<a href="Ardzhuna.html">Ardzhuna file</a>
 </body>
 </html>
 
