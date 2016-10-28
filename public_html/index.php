@@ -4,16 +4,17 @@
 
 <title>Only git</title>
 <style>
-.darkmark{
+.whitemark{
 width:20px;
 height:20px;
 border-radius:10px;
-background-color:black;
+background-color:white;
+border: 1px solid black;
 }
-input + label>img,input[type="radio"],input:checked + label>div.darkmark{
+#RadioStyle>input[type="radio"] + label>img,input[type="radio"],input[type="radio"]:checked + label>div.whitemark{
 	display:none;
 }
-input:checked + label>img{
+#RadioStyle>input[type="radio"]:checked + label>img{
 	display:block;
 }
 </style>
@@ -28,12 +29,13 @@ window.onload=function(){
 <body>
 <hr>
 Checkbox swith<br>
+<div id="RadioStyle">
+	<input type="radio" id="by" name="country" /><label  for="by"><div class="whitemark"></div><img src="http://git/public_html/check-mark.png"/>BY</label><br>
 
-	<input type="radio" id="by" name="country" checked/><label  for="by"><div class="darkmark"></div><img src="http://git/public_html/by.png"/>BY</label><br>
-
-	<input type="radio" id="ua" name="country"/><label for="ua"><div class="darkmark"></div><img src="http://git/public_html/ua.png"/>UA</label><br>
+	<input type="radio" id="ua" name="country"/><label for="ua"><div class="whitemark"></div><img src="http://git/public_html/check-mark.png"/>UA</label><br>
 
 <a id="popupbutton" href="ya.ru"><button>GO</button></a>
+</div>
 <hr>
 <a href="max.html">Max file</a>
 <a href="Ardzhuna.html">Ardzhuna file</a>
