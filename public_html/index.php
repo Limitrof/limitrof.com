@@ -10,7 +10,9 @@ height:20px;
 border-radius:10px;
 background-color:black;
 }
-input + label>img,input[type="radio"],input:checked + label>div.darkmark{
+input + label>img,
+input[type="radio"],
+input:checked + label>div.darkmark{
 	display:none;
 }
 input:checked + label>img{
@@ -29,9 +31,9 @@ window.onload=function(){
 <hr>
 Checkbox swith<br>
 
-	<input type="radio" id="by" name="country" checked/><label  for="by"><div class="darkmark"></div><img src="http://git/public_html/by.png"/>BY</label><br>
+	<input type="radio" id="by" name="country" checked/><label  for="by"><div class="darkmark"></div><img src="by.png"/>BY</label><br>
 
-	<input type="radio" id="ua" name="country"/><label for="ua"><div class="darkmark"></div><img src="http://git/public_html/ua.png"/>UA</label><br>
+	<input type="radio" id="ua" name="country"/><label for="ua"><div class="darkmark"></div><img src="ua.png"/>UA</label><br>
 
 <a id="popupbutton" href="ya.ru"><button>GO</button></a>
 <hr>
