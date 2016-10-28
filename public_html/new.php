@@ -4,6 +4,6 @@
 </head>
 <body>
 new<br>
-new line!
+new line!<hr>
 </body>
 </html>
