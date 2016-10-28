@@ -11,7 +11,6 @@ background-color:white;
 border: 1px solid black;
 }
 
-<<<<<<< HEAD
 input + label>img,
 input[type="radio"],
 input:checked + label>div.whitemark{
