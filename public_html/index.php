@@ -39,6 +39,8 @@ Checkbox swith<br>
 <hr>
 <a href="max.html">Max file</a>
 <a href="Ardzhuna.html">Ardzhuna file</a>
+<div style="width:300px; border: 1px solid green;height:100px;">
+</div>
 </body>
 </html>
 
