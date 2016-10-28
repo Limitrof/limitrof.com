@@ -13,7 +13,7 @@ border: 1px solid black;
 
 input + label>img,
 input[type="radio"],
-input:checked + label>div.darkmark{
+input:checked + label>div.whitemark{
 	display:none;
 }
 #RadioStyle>input[type="radio"]:checked + label>img{
