@@ -37,6 +37,7 @@ Checkbox swith<br>
 <hr>
 <a href="max.html">Max file</a>
 <a href="Ardzhuna.html">Ardzhuna file</a>
+<div>Limitrof block</div>
 </body>
 </html>
 
