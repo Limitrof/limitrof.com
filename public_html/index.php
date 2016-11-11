@@ -12,10 +12,16 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <style>
+/* main container*/
+.tabbable{
+padding:30px;
+background-color: #f1f3f7;
+}
 #container select{
-	height: 30px;
-    margin-top: -10px;
-    width: 80%;  
+	height: 50px;
+	margin-top: -15px;
+    width: 80%; 
+	padding-left: 20px;
 }
 .stalicPrice{
 	width:300px;
@@ -26,17 +32,32 @@
 	right:40px;
 	top:50px;
 	border-radius:20px;
-padding:10px;
-background-color:white;
+	padding:10px;
+	background-color:white;
 }
 .bcwhite{
 	background-color:white;
 }
 .bcgray{
-	background-color:gray;
+	background-color:#e8e9ee;
+	color:#8d90a3;
+	height:70px;
+    padding-top: 25px;	border-bottom:1px solid #b6b6bb;
+}
+.price_sell{
+	background-color:#448bd9;
+	color:white;
+	width:120px;
+	margin-top: -15px;
 	height:50px;
-	padding-top:15px;
-	border-bottom:1px solid #b6b6bb;
+	border-radius:7px;
+	font-size:18px;
+	font-weight:bold;
+	text-align: center;
+	padding-top:13px;
+}
+label{
+display:flex;
 }
 .checkboxforprice{
 display:block;
@@ -48,10 +69,21 @@ display:none;
 }
 .width20{
 width: 20px;
+text-align: center;
 }
 .width70{
 width: 70px;
+text-align: center;
 }
+.blueColor_h80_pt5{
+color:#438bd5;
+height:80px;
+padding-top: 5px;
+}
+.margintop80{
+margin-top:80px;
+}
+
 </style>
 </head>
 <body>
@@ -81,7 +113,11 @@ class SomeSum extends React.Component{
 	
 	  render() {
 		  //to do - сюда таскать значение из резалт-таблицы
-			return <div>{this.props.priceinrow}</div>;
+		   if(this.props.priceinrow){ 
+			/*  alert(this.props.priceinrow); */
+				return <div className="price_sell">{this.props.priceinrow}</div>;
+		   }
+		   return <span></span>;
 	  }
 }
 class ProductSelect extends React.Component {
@@ -256,7 +292,7 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 				}
 				
 				  if (product.category !== lastCategory) {
-					buttonListElements.push(<div className="row bcwhite"><div className="col-md-12"><h3>{product.category}</h3></div></div>);
+					buttonListElements.push(<div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div>);
 				 }
 				//check prefix and set if exist
 				if (product.showwordprefix != '') {	
@@ -278,9 +314,9 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 						<label   htmlFor={product.indexid}>{product.name}</label>
 					</div>
 					
-					<div className="col-md-5 bcgray">{usersControlFormula}</div>
+					<div className="col-md-4 bcgray">{usersControlFormula}</div>
 					
-					<div className="col-md-2 bcgray"><SomeSum priceinrow={pricewithprefixandsuffix} key={product.price} /></div>
+					<div className="col-md-3 bcgray"><SomeSum priceinrow={pricewithprefixandsuffix} key={product.price} /></div>
 
 				</div>);
 				  lastCategory = product.category;
