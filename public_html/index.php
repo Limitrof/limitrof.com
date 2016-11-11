@@ -432,12 +432,12 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 				//show or hide select or input
 				var hideinputonphone = "col-md-4 bcgray";
 				if (product.formula == 'none') {
-					hideinputonphone = "col-md-4 bcgray hidden-sm";
+					hideinputonphone = "col-md-4 bcgray hidden-sm hidden-xs";
 				}		
 				//show or hide price
 				var hidepriceonphone = "col-md-3 bcgray";
 				if (product.price == '') {
-					hidepriceonphone = "col-md-3 bcgray hidden-sm";
+					hidepriceonphone = "col-md-3 bcgray hidden-sm hidden-xs";
 				}
 				
 				
