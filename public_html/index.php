@@ -12,10 +12,14 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <style>
+body{
+	background-color: #f1f3f7;
+}
 /* main container*/
-.tabbable{
+.tabbablefirst{
 padding:30px;
-background-color: #f1f3f7;
+width:1280px;
+margin:0 auto;
 }
 #container select{
 	height: 50px;
@@ -23,14 +27,21 @@ background-color: #f1f3f7;
     width: 80%; 
 	padding-left: 20px;
 }
+#logoImg{
+margin:20px 0 0 60px;
+display:block;
+float: left;
+}
 .stalicPrice{
 	width:300px;
 	height:500px;
 	border:1px solid gray;
-	position:fixed;
-/* position:absolute; */
+	position:absolute;
+	/* position:fixed;
+
 	right:40px;
-	top:50px;
+	 */
+	top:80px;
 	border-radius:20px;
 	padding:10px;
 	background-color:white;
@@ -83,22 +94,113 @@ padding-top: 5px;
 .margintop80{
 margin-top:80px;
 }
-
+#longBlueRow{
+background-color:#033860;
+height:65px;
+width:1280px;
+margin:0 auto;
+}
+#longBlueRowBottom{
+background-color:#033860;
+height:210px;
+width:1280px;
+margin:0 auto;
+}
+#longImg{
+background-image:url('calc.png');
+width:1280px;
+height:431px;
+margin:0 auto;
+}
+#link1{
+    float: left;
+    margin: 20px 0 0 140px;
+    font-size: 18px;
+}
+#link1 a,#linkBottom a{
+    color: white;
+}
+#linkBottom{
+    float: left;
+    margin: 140px 0 0 140px;
+    font-size: 18px;
+}
+#link1 a{
+    color: white;
+}
 </style>
+<script>
+$(document).ready(function() {
+	//$("ul .second-level:nth-child(2)").click();
+});
+</script>
 </head>
 <body>
-<div class="tabbable">
+<div id="longBlueRow" class="row">
+	<div class="col-md-12">
+		<img id="logoImg" src="logo.png"/>
+		<div id="link1">
+			<a href="http://agv-aftermarket.com/">AGV Aftermarket</a>
+		</div>
+	</div>
+</div>
+<div id="longImg"></div>
+<div class="tabbable tabbablefirst">
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="#tab10" data-toggle="tab">AGV</a></li>
 		<li><a href="#tab20" data-toggle="tab">AGV lab</a></li>
 	</ul>
-	<div class="tab-content" style="background-color:#f1f3f7;padding:20px;">
+	<div class="tab-content">
 		<div class="tab-pane active" id="tab10">
-			<div id="container">
-			</div>
+				<!-----------------------------------second tab START------------------------>												
+																			<div class="tabbable">
+																		<ul class="nav nav-tabs second-level">
+																			<li><a href="#tab100" data-toggle="tab">Marketing</a></li>
+																			<li class="active"><a href="#tab200" data-toggle="tab">Sales Push Campaignes</a></li>
+																			<li><a href="#tab300" data-toggle="tab">Direct Research</a></li>
+																			<li><a href="#tab400" data-toggle="tab">POS Products 1</a></li>
+																			<li><a href="#tab500" data-toggle="tab">POS Products 2</a></li>
+																		</ul>
+																		<div class="tab-content">
+																			<div class="tab-pane" id="tab100">
+																				Marketing
+																			</div>
+																			<div class="tab-pane active" id="tab200">
+																																				<!--------------------------------third tab START-------------------->
+																																				<div class="tabbable">
+																																					<ul class="nav nav-tabs third-level">
+																																						<li class="active"><a href="#tab1000" data-toggle="tab">Самостоятельный расчет</a></li>
+																																						<li><a href="#tab2000" data-toggle="tab">Расчет от бюджета</a></li>
+																																					</ul>
+																																					<div class="tab-content">
+																																						<div class="tab-pane active" id="tab1000">
+																																							<div id="container">
+																																							</div>
+																																						</div>
+																																						<div class="tab-pane" id="tab2000">
+																																							<p>Расчет от бюджета</p>
+																																						</div>
+																																					</div>
+																																				</div>
+																																<!--------------------------------third tab FINISH-------------------->
+																			</div>
+																			<div class="tab-pane" id="tab300">
+																				Direct Research
+																			</div>
+																			<div class="tab-pane" id="tab400">
+																				POS Products 1
+																			</div>
+																			<div class="tab-pane" id="tab500">
+																				POS Products 2
+																			</div>
+																		</div>
+																	</div>
+			<!-----------------------------------second tab START------------------------>
 		</div>
 		<div class="tab-pane" id="tab20">
+			<!--AGV lab START-->
 			<p>AGV lab...</p>
+			<!--AGV lab FINISH-->
 		</div>
 	</div>
 </div>
@@ -106,6 +208,15 @@ margin-top:80px;
 
 <div id="container">
     <!-- This element's contents will be replaced with your component. -->
+</div>
+<!-- bottom-->
+<div id="longBlueRowBottom" class="row">
+	<div class="col-md-12">
+		<!--img id="logoImgBottom" src="logo.png"/-->
+		<div id="linkBottom">
+			<a href="http://agv-aftermarket.com/">Copyright © 2016. AGV Aftermarket.</a>
+		</div>
+	</div>
 </div>
 <script type="text/babel">
 class SomeSum extends React.Component{
@@ -199,6 +310,16 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 			  ]
 	}
   } 
+  
+  //////////////////click jQuery execute first BUT...
+/*   
+   componentDidMount() {
+		// when attaching with jquery this event handler is run before other handlers
+        //$('body').bind('click', this.bodyClickHandler);
+        document.addEventListener('click', this.bodyClickHandler);
+  } */
+  
+  
 	///////////
 	// render
 	render(content) { 
@@ -217,44 +338,46 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 				price: '', 
 				stocked: true, 
 				name: 'Укажите длительность Программы', 
-				arrOfVlue:[{valOf:1,strInfo:'1-3 месяца'},{valOf:2,strInfo:'4-6 месяцев'},{valOf:5,strInfo:'более 6 месяцев'}]
+				arrOfVlue:[{valOf:1,strInfo:'1-3 месяца'},{valOf:2,strInfo:'4-6 месяцев'},{valOf:5,strInfo:'более 6 месяцев'}],
+				formula: 'select',
+				multinumber:1
 			},
-	  {unicname:'disributors_quantity',indexid:2,usehiddencheckbox:true,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'кол-во дистрибьюторов', price: '', stocked: false, name: 'Укажите количество дистрибъюторов', arrOfVlue:1},
-	  {unicname:'region',indexid:3,usehiddencheckbox:true,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'География программы', arrOfVlue:[{valOf:1,strInfo:'Беларусь'},{valOf:2,strInfo:'Россия'},{valOf:2,strInfo:'Украина'},{valOf:3,strInfo:'Казахстан'},{valOf:4,strInfo:'Другие страны'},{valOf:4,strInfo:'Три страны Прим. Украина, Россия, Казахстан'}]},
+	  {unicname:'disributors_quantity',indexid:2,usehiddencheckbox:true,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'кол-во дистрибьюторов', price: '', stocked: false, name: 'Укажите количество дистрибъюторов', arrOfVlue:1, formula: 'set_distributor_number',multinumber:1},
+	  {unicname:'region',indexid:3,usehiddencheckbox:true,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'География программы', arrOfVlue:[{valOf:1,strInfo:'Беларусь'},{valOf:2,strInfo:'Россия'},{valOf:2,strInfo:'Украина'},{valOf:3,strInfo:'Казахстан'},{valOf:4,strInfo:'Другие страны'},{valOf:4,strInfo:'Три страны Прим. Украина, Россия, Казахстан'}], formula: 'set_geo',multinumber:1},
 	  
 	  //ВТОРОЙ раздел - разработка программы
-	  {unicname:'rooles',indexid:10,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'условия программы', price: '550', stocked: true, name: 'Условия программы', arrOfVlue:'none'},
-	  {unicname:'disr',indexid:11,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'концепция со слоганом, название', price: '200', stocked: true, name: 'Концепция со слоганом, название', arrOfVlue:'none'},
-	  {unicname:'disr',indexid:12,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'презентация для дистрибьюторов', price: '150', stocked: true, name: 'Презентация для дистрибьюторов', arrOfVlue:'none'},
-	  {unicname:'disr',indexid:13,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'инструкция для дистрибьюторов', price: '100', stocked: true, name: 'Инструкция для дистрибьюторов', arrOfVlue:'none'},
+	  {unicname:'rooles',indexid:10,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'условия программы', price: '550', stocked: true, name: 'Условия программы', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  {unicname:'disr',indexid:11,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'концепция со слоганом, название', price: '200', stocked: true, name: 'Концепция со слоганом, название', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  {unicname:'disr',indexid:12,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'презентация для дистрибьюторов', price: '150', stocked: true, name: 'Презентация для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  {unicname:'disr',indexid:13,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'инструкция для дистрибьюторов', price: '100', stocked: true, name: 'Инструкция для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:1},
 	 
 	//ТРЕТИЙ раздел 
-	 {unicname:'disr',indexid:21,usehiddencheckbox:false,category: 'Платформа для Программы лояльности:', showwordprefix:'от', showwordsuffix:'€', comment:'функционал регистрации участников, функционал загрузки оборотов, нотификация участников о результатах (e-mail), техническая поддержка', price: '7800', stocked: false, name: 'Платформа для Программы (website)', arrOfVlue:'none'},	 
-	 {unicname:'disr',indexid:22,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал регистрации участников', arrOfVlue:'none'},
-	 {unicname:'disr',indexid:23,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал загрузки оборотов', arrOfVlue:'none'},
-	 {unicname:'disr',indexid:24,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - нотификация участников о результатах (e-mail)', arrOfVlue:'none'},
-	 {unicname:'disr',indexid:25,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал регистрации участников', arrOfVlue:'none'},
+	 {unicname:'disr',indexid:21,usehiddencheckbox:false,category: 'Платформа для Программы лояльности:', showwordprefix:'от', showwordsuffix:'€', comment:'функционал регистрации участников, функционал загрузки оборотов, нотификация участников о результатах (e-mail), техническая поддержка', price: '7800', stocked: false, name: 'Платформа для Программы (website)', arrOfVlue:'none', formula: 'none',multinumber:1},	 
+	 {unicname:'disr',indexid:22,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал регистрации участников', arrOfVlue:'none', formula: 'none',multinumber:1},
+	 {unicname:'disr',indexid:23,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал загрузки оборотов', arrOfVlue:'none', formula: 'none',multinumber:1},
+	 {unicname:'disr',indexid:24,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - нотификация участников о результатах (e-mail)', arrOfVlue:'none', formula: 'none',multinumber:1},
+	 {unicname:'disr',indexid:25,usehiddencheckbox:true,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал регистрации участников', arrOfVlue:'none', formula: 'none',multinumber:1},
 		 
 	 //ЧЕТВЕРТЫЙ раздел
-	  {unicname:'disr',indexid:31,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн для платформы', price: '1500', stocked: true, name: 'Дизайн для платформы (website)', arrOfVlue:'none'},
-	  {unicname:'disr',indexid:32,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'Дизайн рекламного макета Программы', price: '150', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none'},
-	  {unicname:'price_for_banner',indexid:33,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн баннеров для дистрибьюторов', price: '1800', stocked: true, name: 'Дизайн баннеров для дистрибьюторов', arrOfVlue:'none'},
-	  {unicname:'count_for_banner',indexid:34,usehiddencheckbox:true,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'Количество баннеров', arrOfVlue:5},
-	  {unicname:'disr',indexid:35,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'some comment text', price: '1500', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none'},
-	  {unicname:'disr',indexid:36,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн сертификатов победителям', price: '200', stocked: true, name: 'Дизайн сертификатов победителям (до 3 макетов)', arrOfVlue:'none'},  
+	  {unicname:'disr',indexid:31,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн для платформы', price: '1500', stocked: true, name: 'Дизайн для платформы (website)', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  {unicname:'disr',indexid:32,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'Дизайн рекламного макета Программы', price: '150', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  {unicname:'price_for_banner',indexid:33,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн баннеров для дистрибьюторов', price: '1800', stocked: true, name: 'Дизайн баннеров для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:5},
+	  {unicname:'count_for_banner',indexid:34,usehiddencheckbox:true,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'Количество баннеров', arrOfVlue:5, formula: 'none',multinumber:5},
+	  {unicname:'disr',indexid:35,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'some comment text', price: '1500', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  {unicname:'disr',indexid:36,usehiddencheckbox:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн сертификатов победителям', price: '200', stocked: true, name: 'Дизайн сертификатов победителям (до 3 макетов)', arrOfVlue:'none', formula: 'none',multinumber:1},  
 		
 	  //ПРИЗОВОЙ фонд
-	   {unicname:'users_quatity',indexid:41,usehiddencheckbox:true,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'', comment:'укажите количество участников ИЛИ количество победителей', price: '', stocked: true, name: 'Количество участников', arrOfVlue:1600},
-	   {unicname:'vinners_quantity',indexid:42,usehiddencheckbox:true,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'', comment:'укажите количество участников ИЛИ количество победителей', price: '', stocked: true, name: 'Количество победителей', arrOfVlue:500},
+	   {unicname:'users_quatity',indexid:41,usehiddencheckbox:true,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'', comment:'укажите количество участников ИЛИ количество победителей', price: '', stocked: true, name: 'Количество участников', arrOfVlue:1600, formula: 'multi',multinumber:1},
+	   {unicname:'vinners_quantity',indexid:42,usehiddencheckbox:true,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'', comment:'укажите количество участников ИЛИ количество победителей', price: '', stocked: true, name: 'Количество победителей', arrOfVlue:500, formula: 'multi',multinumber:1},
 	   
-	   {unicname:'bonus_find',indexid:43,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'подбор поощрений призового фонда', price: '200', stocked: true, name: 'Подбор поощрений призового фонда', arrOfVlue:'none'},
-	   {unicname:'bonus_create',indexid:44,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'закупка/изготовление поощрений', price: '19000', stocked: true, name: 'Закупка/изготовление поощрений', arrOfVlue:'none'},	 
+	   {unicname:'bonus_find',indexid:43,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'подбор поощрений призового фонда', price: '200', stocked: true, name: 'Подбор поощрений призового фонда', arrOfVlue:'none', formula: 'none',multinumber:1},
+	   {unicname:'bonus_create',indexid:44,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'закупка/изготовление поощрений', price: '19000', stocked: true, name: 'Закупка/изготовление поощрений', arrOfVlue:'none', formula: 'none',multinumber:1},	 
 	   
-	   {unicname:'brending_goods',indexid:45,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'брендирование поощрений', price: '2850', stocked: true, name: 'Брендирование поощрений', arrOfVlue:'none'},
-	   {unicname:'logistic',indexid:46,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'логистика (хранение, упаковка)', price: '2100', stocked: true, name: 'Логистика (хранение, упаковка)', arrOfVlue:'none'},
-	   	  {unicname:'delivery',indexid:47,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'доставка', price: '600', stocked: true, name: 'Доставка', arrOfVlue:[{valOf:1,strInfo:'Доставка дистрибьюторам'},{valOf:2,strInfo:'Адресная доставка победителям'}]},
+	   {unicname:'brending_goods',indexid:45,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'брендирование поощрений', price: '2850', stocked: true, name: 'Брендирование поощрений', arrOfVlue:'none', formula: 'none',multinumber:1},
+	   {unicname:'logistic',indexid:46,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'логистика (хранение, упаковка)', price: '2100', stocked: true, name: 'Логистика (хранение, упаковка)', arrOfVlue:'none', formula: 'none',multinumber:1},
+	   	  {unicname:'delivery',indexid:47,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'доставка', price: '600', stocked: true, name: 'Доставка', arrOfVlue:[{valOf:1,strInfo:'Доставка дистрибьюторам'},{valOf:2,strInfo:'Адресная доставка победителям'}], formula: 'multi',multinumber:1},
 	   
-	  {unicname:'bonus_for_disr',indexid:49,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'', comment:'Рассчет осуществляется на основе количества дистрибъюторов указаного во Вводном разделе', price: '300', stocked: true, name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', arrOfVlue:'none'}
+	  {unicname:'bonus_for_disr',indexid:49,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'', comment:'Рассчет осуществляется на основе количества дистрибъюторов указаного во Вводном разделе', price: '300', stocked: true, name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', arrOfVlue:'none', formula: 'none',multinumber:1}
 		];
 		var buttonListElements = [];
 		var lastCategory = null;
@@ -306,6 +429,17 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 				} else {
 					pricewithprefixandsuffix = pricewithprefix;
 				}
+				//show or hide select or input
+				var hideinputonphone = "col-md-4 bcgray";
+				if (product.formula == 'none') {
+					hideinputonphone = "col-md-4 bcgray hidden-sm";
+				}		
+				//show or hide price
+				var hidepriceonphone = "col-md-3 bcgray";
+				if (product.price == '') {
+					hidepriceonphone = "col-md-3 bcgray hidden-sm";
+				}
+				
 				
 				  buttonListElements.push(
 				  <div  key={product.indexid} className="row" title={product.comment}>
@@ -314,9 +448,9 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 						<label   htmlFor={product.indexid}>{product.name}</label>
 					</div>
 					
-					<div className="col-md-4 bcgray">{usersControlFormula}</div>
+					<div className={hideinputonphone}>{usersControlFormula}</div>
 					
-					<div className="col-md-3 bcgray"><SomeSum priceinrow={pricewithprefixandsuffix} key={product.price} /></div>
+					<div className={hidepriceonphone}><SomeSum priceinrow={pricewithprefixandsuffix} key={product.price} /></div>
 
 				</div>);
 				  lastCategory = product.category;
@@ -496,7 +630,6 @@ ReactDOM.render(
   <DankButton />,
   document.getElementById('container')
 );
-</script>
 </script>
 </body>
 </html>
