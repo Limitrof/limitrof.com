@@ -216,7 +216,7 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 	   
 	   {unicname:'brending_goods',indexid:45,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'брендирование поощрений', price: '2850', stocked: true, name: 'Брендирование поощрений', arrOfVlue:'none'},
 	   {unicname:'logistic',indexid:46,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'логистика (хранение, упаковка)', price: '2100', stocked: true, name: 'Логистика (хранение, упаковка)', arrOfVlue:'none'},
-	   	  {unicname:'delivery',indexid:47,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'доставка', price: '600', stocked: true, name: 'Доставка', arrOfVlue:[{valOf:2,strInfo:'Доставка дистрибьюторам'},{valOf:3,strInfo:'Адресная доставка победителям'}]},
+	   	  {unicname:'delivery',indexid:47,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'доставка', price: '600', stocked: true, name: 'Доставка', arrOfVlue:[{valOf:1,strInfo:'Доставка дистрибьюторам'},{valOf:2,strInfo:'Адресная доставка победителям'}]},
 	   
 	  {unicname:'bonus_for_disr',indexid:49,usehiddencheckbox:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'', comment:'Рассчет осуществляется на основе количества дистрибъюторов указаного во Вводном разделе', price: '300', stocked: true, name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', arrOfVlue:'none'}
 		];
