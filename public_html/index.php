@@ -21,28 +21,34 @@ padding:30px;
 width:1280px;
 margin:0 auto;
 }
+.tabbablefirst>.nav{
+	margin-left: -32px;
+}
 #container select{
 	height: 50px;
 	margin-top: -15px;
     width: 80%; 
 	padding-left: 20px;
 }
+#reactroot{
+margin-left:-30px;
+}
 #logoImg{
 margin:20px 0 0 60px;
 display:block;
 float: left;
 }
-.stalicPrice{
-	width:300px;
-	height:500px;
+#staticPrice{
+	width:100%;
+	height:300px;
+	margin-top:80px;
+	/*position:absolute;
 	border:1px solid gray;
-	position:absolute;
-	/* position:fixed;
-
+	 position:fixed;
+	border-radius:20px;
 	right:40px;
 	 */
-	top:80px;
-	border-radius:20px;
+	top:80px;	
 	padding:10px;
 	background-color:white;
 }
@@ -128,10 +134,50 @@ margin:0 auto;
 #link1 a{
     color: white;
 }
+.textalignright{
+text-indent:50px;
+font-weight:bold;
+}
+.colorblue{
+color:#448bd8;
+}
 </style>
 <script>
+
 $(document).ready(function() {
-	//$("ul .second-level:nth-child(2)").click();
+function moveBillContainer(){
+	if($('#staticPrice').offset().left > 100)
+	{
+			var basePosition = $('#container').offset().top;
+			var startPosition = $('#staticPrice').offset().top;
+			var bottomPosition = $('#longBlueRowBottom').offset().top;
+			console.log("bottomPosition="+bottomPosition);
+			
+			var staticPositionPlusHeight = $('#staticPrice').offset().top +  410;
+			console.log("bottomPositionPlusHeight="+staticPositionPlusHeight);
+				console.log ($('#staticPrice').offset().top);
+				console.log ($(window).scrollTop());
+			//if position smaller then current top & currentPos + Height < than longBlueRowBottom
+			var currStaticIfNotMove = $('#staticPrice').offset().top - $(window).scrollTop();
+			if ( currStaticIfNotMove < 100 && staticPositionPlusHeight < bottomPosition){
+			//if ( currStaticIfNotMove < 100){
+				//console.log('bzzz '+ currStaticIfNotMove);
+				var forNewPos =  $(window).scrollTop() + 100;
+				//console.log("forNewPos="+forNewPos);
+				$('#staticPrice').offset({"top":forNewPos});	
+			}
+			$('#staticPrice').offset().top
+			if ( ( $('#staticPrice').offset().top >(basePosition +100) ) && currStaticIfNotMove > 100 ){
+				console.log("left buttom position");
+				var forNewPos =  $(window).scrollTop() + 100;
+				//console.log("forNewPos="+forNewPos);
+				$('#staticPrice').offset({"top":forNewPos});	
+			}
+	}
+}
+	$( window ).resize(moveBillContainer);
+	$( window ).scroll(moveBillContainer);
+	
 });
 </script>
 </head>
@@ -272,8 +318,15 @@ class DankButton extends React.Component {
 	this.state = {
 		allAmount: 0,
 		bannerquantity: 5,
-vinnerquantity:500, //vinner quantity defoult
-delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address 
+		billDev:0,
+		billPlatform:0,
+		billDesign:0,
+		billBonus:0,
+participant:1600,
+coverage:"высокое",
+quanticont:1000,
+		vinnerquantity:500, //vinner quantity default
+		delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address 
 		resultPrices:[  
 			  {unicname:'period', indexid:1,category: 'Вводные данные', baseprice: '0', price: '0', stocked: true, name: 'Укажите длительность Программы', formula: 'multi',multinumber:1, needit: false},
 			  {unicname:'disributors_quantity',indexid:2,category: 'Вводные данные',  baseprice: '0', price: '0', stocked: false, name: 'IT консалтинг', formula: 'multi',multinumber:1, needit: false},
@@ -313,6 +366,7 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
   
   //////////////////click jQuery execute first BUT...
 /*   
+	// componentDidMount: function() {
    componentDidMount() {
 		// when attaching with jquery this event handler is run before other handlers
         //$('body').bind('click', this.bodyClickHandler);
@@ -327,6 +381,8 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 		// get it form db
 		// Первый раздел - вводные данные
 		var PRODUCTS = [
+			
+			//0
 			{
 				unicname:'period',
 				indexid:1,
@@ -342,13 +398,25 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 				formula: 'select',
 				multinumber:1
 			},
+			
+			//1
 	  {unicname:'disributors_quantity',indexid:2,usehiddencheckbox:true,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'кол-во дистрибьюторов', price: '', stocked: false, name: 'Укажите количество дистрибъюторов', arrOfVlue:1, formula: 'set_distributor_number',multinumber:1},
+	  
+	  //2
 	  {unicname:'region',indexid:3,usehiddencheckbox:true,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'География программы', arrOfVlue:[{valOf:1,strInfo:'Беларусь'},{valOf:2,strInfo:'Россия'},{valOf:2,strInfo:'Украина'},{valOf:3,strInfo:'Казахстан'},{valOf:4,strInfo:'Другие страны'},{valOf:4,strInfo:'Три страны Прим. Украина, Россия, Казахстан'}], formula: 'set_geo',multinumber:1},
 	  
 	  //ВТОРОЙ раздел - разработка программы
+		  
+		//3  
 	  {unicname:'rooles',indexid:10,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'условия программы', price: '550', stocked: true, name: 'Условия программы', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  
+	  //4
 	  {unicname:'disr',indexid:11,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'концепция со слоганом, название', price: '200', stocked: true, name: 'Концепция со слоганом, название', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  
+	  //5
 	  {unicname:'disr',indexid:12,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'презентация для дистрибьюторов', price: '150', stocked: true, name: 'Презентация для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  
+	  //6
 	  {unicname:'disr',indexid:13,usehiddencheckbox:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'инструкция для дистрибьюторов', price: '100', stocked: true, name: 'Инструкция для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:1},
 	 
 	//ТРЕТИЙ раздел 
@@ -458,22 +526,71 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 			}, this);		
 			// child block
 			////////////////
-		return (<div  className="row" key="mainform">
+		return (<div  className="row" key="mainform" id="reactroot">
 					<div className="col-md-8">{buttonListElements}</div>
 					<div className="col-md-4">
-						<div className="stalicPrice">{this.state.allAmount}</div>
-						<button type="button" className="btn btn-danger">Click me!{this.state.buttonNumber}</button>
+						<div id="staticPrice">
+						
+						<div className="row">
+							<div className="col-md-9 colorblue">Результаты</div>
+
+						</div>
+						
+						
+						<div className="row">
+							<div className="col-md-9">Разработка программы: услуги агентства</div>
+							<div className="col-md-3">{this.state.billDev} €</div>
+						</div>
+						
+						<div className="row">
+							<div className="col-md-9">Платформа для Программы лояльности</div>
+							<div className="col-md-3">{this.state.billPlatform} €</div>
+						</div>
+						
+						<div className="row">
+							<div className="col-md-9">Дизайн key visual</div>
+							<div className="col-md-3">{this.state.billDesign} €</div>
+						</div>
+						
+						<div className="row">
+							<div className="col-md-9"> Призовой фонд</div>
+							<div className="col-md-3">{this.state.billBonus} €</div>
+						</div>
+						
+						<hr/>
+						<div className="row colorblue">
+							<div className="col-md-9">Охват (кол-во участников)</div>
+							<div className="col-md-3">{this.state.participant}</div>
+						</div>
+						<div className="row colorblue">
+							<div className="col-md-9">Качество контакта</div>
+							<div className="col-md-3">{this.state.coverage}</div>
+						</div>
+						<div className="row colorblue">
+							<div className="col-md-9">Среднее количество контактов за Программу</div>
+							<div className="col-md-3">{this.state.quanticont}</div>
+						</div>					
+						
+						
+						<hr/>
+						<div className="row colorblue">
+							<div className="col-md-9"><span className="textalignright">Итого:</span></div>
+							<div className="col-md-3">{this.state.allAmount} €</div>
+						</div>
+						
+						</div>
+						
 					</div>
 				</div>);
 	}
 	// render  
 	///////////
-	
+	//<!--button type="button" className="btn btn-danger">Click me!{this.state.buttonNumber}</button-->
 	setUserQuantiy(indexinarray,event){
 		var valueForUserQuantity = event.target.value;
 		var newArrForFormula = this.state.resultPrices;
 		newArrForFormula[indexinarray].multinumber = valueForUserQuantity;
-	 alert(valueForUserQuantity);
+	 this.setState({participant : valueForUserQuantity});
 		   newArrForFormula.map(function(currentRow,index) {
 			   if (currentRow.unicname == 'vinners_quantity') {
 				   newArrForFormula[index].multinumber = parseInt(valueForUserQuantity*0.3);
@@ -486,14 +603,19 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 	}	
 	setVinnerQuantiy(indexinarray,event){
 		var valueForVinnerQuantity = event.target.value;
+		var participantQuantity = valueForVinnerQuantity*3;
+		this.setState({participant : participantQuantity});
 		var newArrForFormula = this.state.resultPrices;
 		newArrForFormula[indexinarray].multinumber = valueForVinnerQuantity;
 		this.state.vinnerquantity = newArrForFormula[indexinarray].multinumber;
 		  newArrForFormula.map(function(currentRow,index) {
 			   if (currentRow.unicname == 'users_quantity') {
-				   newArrForFormula[index].multinumber =parseInt(valueForVinnerQuantity*3);
+				   newArrForFormula[index].multinumber = participantQuantity;
+
 			   }
-		   });    
+		   }); 
+		   
+		   
 		  this.setState({ resultPrices: newArrForFormula });
 
 		  this.recountIt();
@@ -588,12 +710,12 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 		//delivery format
 		var delivery_price = 600;
 		if (this.state.delivery_format == 1) {
-			if (this.state.vinnerquantity*2 > 600) {
+			if (this.state.vinnerquantity * 2 > 600) {
 				delivery_price = this.state.vinnerquantity*2;//delivery only to destributors
 			}
-			} else {
-				delivery_price = this.state.vinnerquantity*40;//delivery to vinners address 
-			}
+		} else {
+			delivery_price = this.state.vinnerquantity*40;//delivery to vinners address 
+		}
 		var onUpdateAmountArr = this.state.resultPrices;
 		onUpdateAmountArr.map(function(currentRow,index) {
 		//only Price-generation stirngs must be used here
@@ -622,8 +744,43 @@ delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address
 		
 		this.setState({allAmount: forAmount});
 		this.setState({ resultPrices: onUpdateAmountArr });
-	
+	this.makeBill();
 	}
+		//////////////
+	// rows in Bill
+			makeBill(){
+				var billDev=0;
+				var billPlatform=0;
+				var billBonus=0;
+				var billDesign=0;
+				//one by one all array
+				 this.state.resultPrices.map(function(currentRow,index) {
+					//count if checked!
+					if (currentRow.needit == true ){
+						switch (currentRow.category) {
+							   case "Разработка программы: услуги агентства":
+								  billDev += parseFloat(currentRow.price);
+									break
+							   case "Платформа для Программы лояльности:":
+								    billPlatform += parseFloat(currentRow.price);
+								  break							  
+							   case "Дизайн key visual:":
+								    billDesign += parseFloat(currentRow.price);
+								  break
+								case "Призовой фонд":
+								    billBonus += parseFloat(currentRow.price);
+								  break
+							}
+					}
+				});
+				this.setState({billDev:billDev});
+				this.setState({billPlatform:billPlatform});
+				this.setState({billDesign:billDesign});
+				this.setState({billBonus:billBonus});
+			}
+	// rows in Bill
+	//////////////
+
 }
 
 ReactDOM.render(
