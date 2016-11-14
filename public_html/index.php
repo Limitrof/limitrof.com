@@ -21,6 +21,42 @@ padding:30px;
 width:1280px;
 margin:0 auto;
 }
+/* create buttons on tabs*/
+/* .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover { */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover { 
+    background-color: #033860;	
+    cursor: default;	
+color: white;
+}
+.second-level .nav-tabs>li>a, .second-level .nav-tabs>li>a:focus, .second-level .nav-tabs>li>a:hover {
+   /*  color: #555; */
+	color:gray;
+    background-color: #fff;
+    border: 1px solid #ddd;
+/*     border-bottom-color: transparent; */
+}
+.nav-tabs>li>a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+  /*   border-radius: 4px 4px 0 0; */
+    border-radius: 4px;
+}
+
+.nav-tabs {
+    /* border-bottom: 1px solid #ddd; */
+		 border-bottom:none;
+}
+.second-level {
+height:90px;
+    margin-left: -30px;
+	    padding-top: 30px;
+background-color:#dfe2e5;
+}
+.second-level .nav-tabs>li {
+width:20%;
+height:80px;
+}
 .tabbablefirst>.nav{
 	margin-left: -32px;
 }
@@ -48,9 +84,12 @@ float: left;
 	border-radius:20px;
 	right:40px;
 	 */
-	top:80px;	
+	
 	padding:10px;
 	background-color:white;
+}
+#staticPrice .col-md{
+	top:80px;
 }
 .bcwhite{
 	background-color:white;
@@ -173,7 +212,9 @@ function moveBillContainer(){
 				//console.log("forNewPos="+forNewPos);
 				$('#staticPrice').offset({"top":forNewPos});	
 			}
-	}
+			} else { 
+$('#staticPrice').css({"margin-top":"10px","top":"0px","height":"470px"});
+			}
 }
 	$( window ).resize(moveBillContainer);
 	$( window ).scroll(moveBillContainer);
