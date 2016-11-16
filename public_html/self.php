@@ -909,7 +909,6 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 		  var basePrice = newArrForFormula[indexinarray].baseprice;
 		  newArrForFormula[indexinarray].multinumber = valueForMulti;
 		  newArrForFormula[indexinarray].price = parseFloat(valueForMulti) * parseFloat(basePrice);
-		 // alert('newArrForFormula[indexinarray].price = ' + newArrForFormula[indexinarray].price);
 		  this.setState({ resultPrices: newArrForFormula });
 		  
 		  this.recountIt();
@@ -1003,7 +1002,6 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 					if (currentRow.needit == true ){
 						switch (currentRow.category) {
 							   case "Разработка программы: услуги агентства":
-								   alert("in programm counting!");
 								  billDev += parseFloat(currentRow.price);
 									break
 							   case "Платформа для Программы лояльности:":
