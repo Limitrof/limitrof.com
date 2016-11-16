@@ -675,7 +675,7 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 					//alert('somres=');
 					
 					this.state.value = this.state.resultPrices[index].multinumber;
-					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setBudget.bind(this,index)}  value={this.state.budget}/><button  onClick={this.setBudget.bind(this,index)} className="mleft100">Рассчитать</button></div>);
+					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setBudget.bind(this,index)}  value={this.state.budget}/><button  className="mleft100"  onClick={this.setBudget.bind(this,index)} value={this.state.budget}>Рассчитать</button></div>);
 				} else if (product.unicname=='count_for_banner') {
 					usersControlFormula.push(<div><input className="width20" type="text"  onChange={this.setBannerQuantiy.bind(this,index)}  value={this.state.resultPrices[index].multinumber}/></div>);				
 				} else if (product.unicname=='users_quatity') {
