@@ -684,7 +684,7 @@ class DankButton extends React.Component {
 				  name: 'Количество участников', 
 				  arrOfVlue:1600, 
 				  formula: 'multi',
-				  multinumber:1, 
+				  multinumber:1600, 
 				  needit: false
 				},	
 				  
@@ -773,7 +773,7 @@ class DankButton extends React.Component {
 				  showwordsuffix:'€', 
 				  comment:'логистика (хранение, упаковка)', 
 				  baseprice: '2100', 
-				  price: '0', 
+				  price: '2100', 
 				  stocked: true, 
 				  name: 'Логистика (хранение, упаковка)', 
 				  arrOfVlue:'none',
@@ -840,14 +840,15 @@ class DankButton extends React.Component {
 		//////////////
 		// get it form db
 		// Первый раздел - вводные данныеoldArray
-		var PRODUCTS = this.state.resultPrices;
+		//var PRODUCTS = this.state.resultPrices;
 		var buttonListElements = [];
 		var lastCategory = null;
 		//var i = 1;
+	var arrSize = this.state.resultPrices.length;
 	
 			////////////////
 			// child block
-			PRODUCTS.map(function(product,index) {
+			this.state.resultPrices.map(function(product,index) {
 				//UNIC FORMULA
 				var usersControlFormula = [];
 				if (product.unicname=='disributors_quantity') {
@@ -875,15 +876,33 @@ class DankButton extends React.Component {
 				}
 				
 				//USE OR NOT checkbox
-				var useOrNotCheckbox = []
+				var useOrNotCheckbox = [];
 				if (product.usehiddencheckbox) {
 					useOrNotCheckbox.push(<input className='checkboxforprice hiddencheckbox' type='checkbox' id={product.indexid}  onClick={this.handleClickCheckbox.bind(null, product.price,index)} value={product.price} checked/>);
 				} else {
 					useOrNotCheckbox.push(<input className='checkboxforprice' type='checkbox' id={product.indexid}   onClick={this.handleClickCheckbox.bind(null, product.price,index)} onChange={this.onChange} value={product.price} checked={this.state.resultPrices[index].ischecked} />);
 				}
 				
+
+				
 				  if (product.category !== lastCategory) {
-					buttonListElements.push(<div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div>);
+				var itogo='Итого: ';	  
+					switch (lastCategory) {
+								case "Разработка программы: услуги агентства":
+					buttonListElements.push(<div><div  className="itogo">{this.state.billDev}</div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
+								  break;	   
+							  case "Платформа для Программы лояльности:":
+					buttonListElements.push(<div><div  className="itogo">{this.state.billPlatform}</div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
+								  break;
+							  case "Дизайн key visual:":
+					buttonListElements.push(<div><div  className="itogo">{this.state.billDesign}</div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
+								  break;
+								default:
+					buttonListElements.push(<div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
+							}
+					
+					
+					
 				 }
 				//check prefix and set if exist
 				if (product.showwordprefix != '') {	
@@ -922,6 +941,13 @@ class DankButton extends React.Component {
 
 				</div>);
 				  lastCategory = product.category;
+				  
+				  				if( (arrSize-1) == index){
+					
+						buttonListElements.push(<div><div className="itogo">*Призовой фонд
+(включая налоги (для РФ при условии, что фактическая стоимость поощрения не превышает 3500 руб.), комиссию агентства, юридическое и бухгалтерское сопровождение) {this.state.billBonus}</div></div>);
+				}
+				  
 				 // i++;
 			}, this);		
 			// child block
@@ -1088,7 +1114,7 @@ promise
 		  console.log("budget=" + this.state.budget);
 		  console.log("Кол-во дистрибъюторов distributorQuantity=" + distributorQuantity);
 		  console.log("this.state.budget=" + this.state.budget);
-		var Y =  this.state.budget - (this.state.billDev  + this.state.billPlatform + this.state.billDesign + distributorQuantity*600 + 3000 + 200)
+		var Y =  this.state.budget - (this.state.billDev  + this.state.billPlatform + this.state.billDesign + distributorQuantity*600 + 3000 + 200);
 		console.log("Y="+Y);
 		var vinnerQuantity = parseInt(Y /103);
 		console.log("Количество победителей vinnerQuantity=" + vinnerQuantity);
