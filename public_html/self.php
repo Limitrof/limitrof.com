@@ -89,7 +89,7 @@ float: left;
 	right:40px;
 	 */
 	
-	padding:10px;
+	padding:5px;
 	background-color:white;
 }
 #staticPrice .col-md{
@@ -534,18 +534,138 @@ quanticont:1000,
 				  needit: false},
 			
 			//ТРЕТИЙ раздел  
-			  {unicname:'dis5r',indexid:21,ischecked:false,category: 'Платформа для Программы',  baseprice: '7800',price: '0', stocked: false, name: 'Платформа для Программы (website)', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis6r',indexid:22,ischecked:false,category: 'Платформа для Программы',  baseprice: '0',price: '0', stocked: false, name: 'Функционал регистрации участников', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis7r',indexid:23,ischecked:false,category: 'Платформа для Программы',  baseprice: '0',price: '0', stocked: false, name: 'Функционал загрузки оборотов', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis8r',indexid:24,ischecked:false,category: 'Платформа для Программы',  baseprice: '0',price: '0', stocked: false, name: 'Нотификация участников о результатах (e-mail)', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis9r',indexid:25,ischecked:false,category: 'Платформа для Программы',  baseprice: '0',price: '0', stocked: false, name: 'Платформа для Программы (website)', formula: 'multi',multinumber:1, needit: false},
-			  
-			  {unicname:'dis11r',indexid:31,ischecked:false,category: 'Дизайн key visual: информация о Key visual услуга',  baseprice: '1500',price: '0', stocked: true, name: 'Дизайн для платформы (website)', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis12r',indexid:32,ischecked:false,category: 'Дизайн key visual: информация о Key visual услуга',  baseprice: '150',price: '0', stocked: true, name: 'Дизайн рекламного макета Программы', formula: 'multi',multinumber:1, needit: false},			  {unicname:'price_for_banner',indexid:33,ischecked:false,category: 'Дизайн key visual: информация о Key visual услуга',  baseprice: '300',price: '1800', stocked: true, name: 'Дизайн баннеров для дистрибьюторов', formula: 'multi',multinumber:5, needit: false},
-			  {unicname:'count_for_banner',indexid:34,ischecked:false,category: 'Дизайн key visual: информация о Key visual услуга',  baseprice: '0',price: '0', stocked: true, name: 'Количество баннеров', formula: 'multi',multinumber:5, needit: false},
-			  {unicname:'dis13r',indexid:35,ischecked:false,category: 'Дизайн key visual: информация о Key visual услуга',  baseprice: '150',price: '0', stocked: true, name: 'Дизайн рекламного макета Программы', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis14r',indexid:36,ischecked:false,category: 'Дизайн key visual: информация о Key visual услуга',  baseprice: '200',price: '0', stocked: true, name: 'Дизайн сертификатов победителям (до 3 макетов)', formula: 'multi',multinumber:1, needit: false},
-			  
+			  {
+				  unicname:'funcplat',
+				  indexid:21,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Платформа для Программы лояльности:',  
+				  baseprice: '7800',
+				  price: '7800', 
+				  stocked: false, 
+				  name: 'Платформа для Программы (website)', 
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  {unicname:'plat',indexid:22,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '0', stocked: false, name: 'Функционал регистрации участников', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'turn',indexid:23,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',  showwordprefix:'', showwordsuffix:'', comment:'', baseprice: '0',price: '0', stocked: false, name: 'Функционал загрузки оборотов', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'usernote',indexid:24,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '0', stocked: false, name: 'Нотификация участников о результатах (e-mail)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'somefunc',indexid:25,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '0', stocked: false, name: 'Платформа для Программы лояльности: (website)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			
+ //ЧЕТВЕРТЫЙ раздел
+			  {
+				  unicname:'designweb',
+				  indexid:31,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€',
+				  comment:'дизайн для платформы', 
+				  baseprice: '1500',
+				  price: '1500', 
+				  stocked: true, 
+				  name: 'Дизайн для платформы (website)', 
+				  arrOfVlue:'none', 
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  {
+				  unicname:'designadvert',
+				  indexid:32,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'дизайн рекламного макета Программы',
+				  baseprice: '150',
+				  price: '150', 
+				  stocked: true, 
+				  name: 'Дизайн рекламного макета Программы', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },			  
+				{
+					unicname:'price_for_banner',
+					indexid:33,
+					usehiddencheckbox:false,
+					ischecked:false,
+					category: 'Дизайн key visual:',
+					showwordprefix:'', 
+					showwordsuffix:'€', 
+					comment:'дизайн баннеров для дистрибьюторов',
+					baseprice: '300',
+					price: '1800', 
+					stocked: true, 
+					name: 'Дизайн баннеров для дистрибьюторов', 
+					arrOfVlue:'none',
+					formula: 'multi',
+					multinumber:5, 
+					needit: false
+					},
+			  {
+				  unicname:'count_for_banner',
+				  indexid:34,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'количество баннеров',
+				  baseprice: '0',
+				  price: '0', 
+				  stocked: true, 
+				  name: 'Количество баннеров', 
+				  formula: 'none',
+				  formula: 'multi',
+				  multinumber:5, 
+				  needit: false
+				  },
+			  {
+				  unicname:'gesignmaket',
+				  indexid:35,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'дизайн рекламного макета Программы',
+				  baseprice: '1500',
+				  price: '0', 
+				  stocked: true, 
+				  name: 'Дизайн рекламного макета Программы', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  {
+				 
+
+				  unicname:'designsetificats',
+				  indexid:36,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'дизайн сертификатов победителям',
+				  baseprice: '200',
+				  price: '0', 
+				  stocked: true, 
+				  name: 'Дизайн сертификатов победителям (до 3 макетов)', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			
+//пятый раздел				  
 			  {unicname:'users_quantity',indexid:41,ischecked:false,category: 'Призовой фонд', baseprice: '', price: '0', stocked: true, name: 'Количество участников', formula: 'multi',multinumber:1600, needit: false},			  
 			  {unicname:'vinners_quantity',indexid:42,ischecked:false,category: 'Призовой фонд', baseprice: '', price: '0', stocked: true, name: 'Количество победителей', formula: 'multi',multinumber:500, needit: false},
 			  
@@ -638,12 +758,14 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 	 {unicname:'regfuncional',indexid:25,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал регистрации участников', arrOfVlue:'none', formula: 'none',multinumber:1},
 		 
 	 //ЧЕТВЕРТЫЙ раздел
-	  {unicname:'gisignweb',indexid:31,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн для платформы', price: '1500', stocked: true, name: 'Дизайн для платформы (website)', arrOfVlue:'none', formula: 'none',multinumber:1},
-	  {unicname:'disignadvert',indexid:32,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'Дизайн рекламного макета Программы', price: '150', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  {unicname:'designweb',indexid:31,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн для платформы', price: '1500', stocked: true, name: 'Дизайн для платформы (website)', arrOfVlue:'none', formula: 'none',multinumber:1},
+		  
+	  {unicname:'designadvert',indexid:32,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'Дизайн рекламного макета Программы', price: '150', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none', formula: 'none',multinumber:1},
+	  
 	  {unicname:'price_for_banner',indexid:33,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн баннеров для дистрибьюторов', price: '1800', stocked: true, name: 'Дизайн баннеров для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:5},
 	  {unicname:'count_for_banner',indexid:34,usehiddencheckbox:true,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'Количество баннеров', arrOfVlue:5, formula: 'none',multinumber:5},
 	  {unicname:'gesignmaket',indexid:35,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'some comment text', price: '1500', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none', formula: 'none',multinumber:1},
-	  {unicname:'disignsetificats',indexid:36,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн сертификатов победителям', price: '200', stocked: true, name: 'Дизайн сертификатов победителям (до 3 макетов)', arrOfVlue:'none', formula: 'none',multinumber:1},  
+	  {unicname:'designsetificats',indexid:36,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн сертификатов победителям', price: '200', stocked: true, name: 'Дизайн сертификатов победителям (до 3 макетов)', arrOfVlue:'none', formula: 'none',multinumber:1},  
 		
 	  //ПРИЗОВОЙ фонд
 	   {unicname:'users_quatity',indexid:41,usehiddencheckbox:true,ischecked:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'', comment:'укажите количество участников ИЛИ количество победителей', price: '', stocked: true, name: 'Количество участников', arrOfVlue:1600, formula: 'multi',multinumber:1},
@@ -862,6 +984,14 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 					if (currentRow.needit != true ){
 						switch (currentRow.category) {
 							   case "Разработка программы: услуги агентства":
+								  newArrForFormula[index].needit = true;
+								  newArrForFormula[index].ischecked = true;
+								  break;
+							  case "Платформа для Программы лояльности:":
+								  newArrForFormula[index].needit = true;
+								  newArrForFormula[index].ischecked = true;
+								  break;
+							  case "Дизайн key visual:":
 								  newArrForFormula[index].needit = true;
 								  newArrForFormula[index].ischecked = true;
 								  break;
