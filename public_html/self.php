@@ -184,6 +184,10 @@ font-weight:bold;
 .colorblue{
 color:#448bd8;
 }
+.mleft100{
+margin-left:70px;
+margin-right:-100px;
+}
 </style>
 <script>
 
@@ -454,7 +458,7 @@ quanticont:1000,
 				  
 	  //ВТОРОЙ раздел - разработка программы				  
 			  
-  {
+				{
 				  unicname:'rooles',
 				  indexid:10,
 				  usehiddencheckbox:false,
@@ -464,7 +468,7 @@ quanticont:1000,
 				  showwordsuffix:'€', 
 				  comment:'условия программы', 
 				  baseprice: '550', 
-				  price: '0', 
+				  price: '550', 
 				  stocked: true, 
 				  name: 'условия программы',
 				  arrOfVlue:'none',
@@ -472,12 +476,64 @@ quanticont:1000,
 				  multinumber:1, 
 				  needit: false
 				  },
-
 				  
-			  {unicname:'dis2r',indexid:11,ischecked:false,category: 'Разработка программы: услуги агентства', baseprice: '200', price: '0', stocked: true, name: 'концепция со слоганом, название', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis3r',indexid:12,ischecked:false,category: 'Разработка программы: услуги агентства', baseprice: '150', price: '0', stocked: true, name: 'презентация для дистрибьюторов', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'dis4r',indexid:13,ischecked:false,category: 'Разработка программы: услуги агентства', baseprice: '100', price: '0', stocked: true, name: 'инструкция для дистрибьюторов', formula: 'multi',multinumber:1, needit: false},
-			  
+			  {
+				  unicname:'programmdiv',
+				  indexid:11,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Разработка программы: услуги агентства',
+				  showwordprefix:'от', 
+				  showwordsuffix:'€',	
+				  comment:'концепция со слоганом, название',
+				  baseprice: '200', 
+				  price: '200', 
+				  stocked: true, 
+				  name: 'концепция со слоганом, название',
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'presentation',
+				  indexid:12,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Разработка программы: услуги агентства', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  baseprice: '150', 
+				  comment:'презентация для дистрибьюторов',
+				  price: '150', 
+				  stocked: true, 
+				  name: 'Презентация для дистрибьюторов',
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'agency',
+				  indexid:13,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Разработка программы: услуги агентства', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€',
+				  comment:'инструкция для дистрибьюторов', 
+				  baseprice: '100', 
+				  price: '100', 
+				  stocked: true, 
+				  name: 'инструкция для дистрибьюторов', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false},
+			
+			//ТРЕТИЙ раздел  
 			  {unicname:'dis5r',indexid:21,ischecked:false,category: 'Платформа для Программы',  baseprice: '7800',price: '0', stocked: false, name: 'Платформа для Программы (website)', formula: 'multi',multinumber:1, needit: false},
 			  {unicname:'dis6r',indexid:22,ischecked:false,category: 'Платформа для Программы',  baseprice: '0',price: '0', stocked: false, name: 'Функционал регистрации участников', formula: 'multi',multinumber:1, needit: false},
 			  {unicname:'dis7r',indexid:23,ischecked:false,category: 'Платформа для Программы',  baseprice: '0',price: '0', stocked: false, name: 'Функционал загрузки оборотов', formula: 'multi',multinumber:1, needit: false},
@@ -619,7 +675,7 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 					//alert('somres=');
 					
 					this.state.value = this.state.resultPrices[index].multinumber;
-					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setBudget.bind(this,index)}  value={this.state.budget}/></div>);
+					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setBudget.bind(this,index)}  value={this.state.budget}/><button  onClick={this.setBudget.bind(this,index)} className="mleft100">Рассчитать</button></div>);
 				} else if (product.unicname=='count_for_banner') {
 					usersControlFormula.push(<div><input className="width20" type="text"  onChange={this.setBannerQuantiy.bind(this,index)}  value={this.state.resultPrices[index].multinumber}/></div>);				
 				} else if (product.unicname=='users_quatity') {
