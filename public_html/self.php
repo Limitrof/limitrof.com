@@ -340,15 +340,12 @@ class ProductSelect extends React.Component {
 
  
  render() {
-/* 	 if (this.props.category=='input') {
-		 return <div><input type="text"  onChange={this.props.onClick}  value={this.state.value}/></div>;
-	 } else { */
 		 var arrOfOptions =[];
 		 this.props.category.map(function(currOption,index){
 		 arrOfOptions.push(<option key={index}  value={currOption.valOf}  >{currOption.strInfo}</option>);
 		});
 		return <div><select onChange={this.props.onClick}  value={this.state.value}>{arrOfOptions}</select></div>;
-	 /* } */
+	 
  }
 /*   
  handleClickSelect(){
@@ -380,7 +377,7 @@ coverage:"высокое",
 quanticont:1000,
 		vinnerquantity:500, //vinner quantity default
 		delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address 
-		resultPrices:[ 
+		resultPrices: [ 
 		//1
 			  {
 				unicname:'period',
@@ -388,12 +385,12 @@ quanticont:1000,
 				usehiddencheckbox:true,
 				ischecked:false,
 				category: 'Вводные данные: общая информация о программе лояльности', 
-				baseprice: '0', 
-				price: '0', 
-				stocked: true, 
 				showwordprefix:'', 
 				showwordsuffix:'', 
-				comment:'ориентировочное время проведения Программы', 
+				comment:'ориентировочное время проведения Программы',
+				baseprice: '0', 
+				price: '', 
+				stocked: true, 
 				name: 'Укажите длительность Программы', 
 			  	arrOfVlue:[{valOf:1,strInfo:'1-3 месяца'},{valOf:2,strInfo:'4-6 месяцев'},{valOf:5,strInfo:'более 6 месяцев'}],
 				formula: 'select',
@@ -407,13 +404,14 @@ quanticont:1000,
 				usehiddencheckbox:true,
 				ischecked:false,
 				category: 'Вводные данные: общая информация о программе лояльности',
-				baseprice: '0', 
-				price: '0',
 				showwordprefix:'',
 				showwordsuffix:'', 
 				comment:'кол-во дистрибьюторов',
+				baseprice: '0', 
+				price: '',
 				stocked: false, 
 				name: 'Укажите количество дистрибъюторов', 
+				arrOfVlue:'none',
 				formula: 'set_distributor_number',
 				multinumber:1, 
 				needit: false
@@ -429,7 +427,7 @@ quanticont:1000,
 				  showwordsuffix:'', 
 				  comment:'ориентировочный бюджет Программы',
 				  baseprice: '0', 
-				  price: '0', 
+				  price: '', 
 				  stocked: false, 
 				  name: 'Ориентировочный бюджет Программы', 
 				  arrOfVlue:50000, 
@@ -448,9 +446,10 @@ quanticont:1000,
 				  showwordsuffix:'', 
 				  comment:'some comment text', 
 				  baseprice: '0',
-				  price: '0', 
+				  price: '', 
 				  stocked: true,
-				  name: 'География программы',	  arrOfVlue:[{valOf:1,strInfo:'Беларусь'},{valOf:2,strInfo:'Россия'},{valOf:2,strInfo:'Украина'},{valOf:3,strInfo:'Казахстан'},{valOf:4,strInfo:'Другие страны'},{valOf:4,strInfo:'Три страны Прим. Украина, Россия, Казахстан'}], 
+				  name: 'География программы',	  
+				  arrOfVlue:[{valOf:1,strInfo:'Беларусь'},{valOf:2,strInfo:'Россия'},{valOf:2,strInfo:'Украина'},{valOf:3,strInfo:'Казахстан'},{valOf:4,strInfo:'Другие страны'},{valOf:4,strInfo:'Три страны Прим. Украина, Россия, Казахстан'}], 
 				  formula: 'set_geo',
 				  multinumber:1, 
 				  needit: false
@@ -539,19 +538,23 @@ quanticont:1000,
 				  indexid:21,
 				  usehiddencheckbox:false,
 				  ischecked:false,
-				  category: 'Платформа для Программы лояльности:',  
+				  category: 'Платформа для Программы лояльности:',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'website',
 				  baseprice: '7800',
 				  price: '7800', 
 				  stocked: false, 
 				  name: 'Платформа для Программы (website)', 
+				  arrOfVlue:'none',
 				  formula: 'multi',
 				  multinumber:1, 
 				  needit: false
 				  },
-			  {unicname:'plat',indexid:22,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '0', stocked: false, name: 'Функционал регистрации участников', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'turn',indexid:23,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',  showwordprefix:'', showwordsuffix:'', comment:'', baseprice: '0',price: '0', stocked: false, name: 'Функционал загрузки оборотов', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'usernote',indexid:24,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '0', stocked: false, name: 'Нотификация участников о результатах (e-mail)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'somefunc',indexid:25,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '0', stocked: false, name: 'Платформа для Программы лояльности: (website)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'plat',indexid:22,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '', stocked: false, name: 'Функционал регистрации участников', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'turn',indexid:23,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',  showwordprefix:'', showwordsuffix:'', comment:'', baseprice: '0',price: '', stocked: false, name: 'Функционал загрузки оборотов', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'usernote',indexid:24,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '', stocked: false, name: 'Нотификация участников о результатах (e-mail)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'somefunc',indexid:25,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '', stocked: false, name: 'Платформа для Программы лояльности: (website)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
 			
  //ЧЕТВЕРТЫЙ раздел
 			  {
@@ -599,8 +602,8 @@ quanticont:1000,
 					showwordprefix:'', 
 					showwordsuffix:'€', 
 					comment:'дизайн баннеров для дистрибьюторов',
-					baseprice: '300',
-					price: '1800', 
+					baseprice: '30',
+					price: '180', 
 					stocked: true, 
 					name: 'Дизайн баннеров для дистрибьюторов', 
 					arrOfVlue:'none',
@@ -618,10 +621,10 @@ quanticont:1000,
 				  showwordsuffix:'', 
 				  comment:'количество баннеров',
 				  baseprice: '0',
-				  price: '0', 
+				  price: '', 
 				  stocked: true, 
 				  name: 'Количество баннеров', 
-				  formula: 'none',
+				  arrOfVlue:5,
 				  formula: 'multi',
 				  multinumber:5, 
 				  needit: false
@@ -636,7 +639,7 @@ quanticont:1000,
 				  showwordsuffix:'€', 
 				  comment:'дизайн рекламного макета Программы',
 				  baseprice: '1500',
-				  price: '0', 
+				  price: '1500', 
 				  stocked: true, 
 				  name: 'Дизайн рекламного макета Программы', 
 				  arrOfVlue:'none',
@@ -656,7 +659,7 @@ quanticont:1000,
 				  showwordsuffix:'€', 
 				  comment:'дизайн сертификатов победителям',
 				  baseprice: '200',
-				  price: '0', 
+				  price: '200', 
 				  stocked: true, 
 				  name: 'Дизайн сертификатов победителям (до 3 макетов)', 
 				  arrOfVlue:'none',
@@ -666,17 +669,155 @@ quanticont:1000,
 				  },
 			
 //пятый раздел				  
-			  {unicname:'users_quantity',indexid:41,ischecked:false,category: 'Призовой фонд', baseprice: '', price: '0', stocked: true, name: 'Количество участников', formula: 'multi',multinumber:1600, needit: false},			  
-			  {unicname:'vinners_quantity',indexid:42,ischecked:false,category: 'Призовой фонд', baseprice: '', price: '0', stocked: true, name: 'Количество победителей', formula: 'multi',multinumber:500, needit: false},
+			  {
+				  unicname:'users_quantity',
+				  indexid:41,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'',
+				  showwordsuffix:'', 
+				  comment:'укажите количество участников ИЛИ количество победителей',
+				  baseprice: '0', 
+				  price: '', 
+				  stocked: true, 
+				  name: 'Количество участников', 
+				  arrOfVlue:1600, 
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				},	
+				  
+			  {
+				  unicname:'vinners_quantity',
+				  indexid:42,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Призовой фонд',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'укажите количество участников ИЛИ количество победителей',
+				  baseprice: '0', 
+				  price: '', 
+				  stocked: true, 
+				  name: 'Количество победителей', 
+				  arrOfVlue:500, 
+				  formula: 'multi',
+				  multinumber:500, 
+				  needit: false
+				  },
 			  
-			  {unicname:'bonus_find',indexid:43,ischecked:false,category: 'Призовой фонд', baseprice: '200', price: '0', stocked: true, name: 'Подбор поощрений призового фонда', formula: 'multi',multinumber:1, needit: false},			  
-			  {unicname:'bonus_create',indexid:44,ischecked:false,category: 'Призовой фонд', baseprice: '19000', price: '0', stocked: true, name: 'Закупка/изготовление поощрений', formula: 'multi',multinumber:1, needit: false},
+			  {
+				  unicname:'bonus_find',
+				  indexid:43,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'подбор поощрений призового фонда',
+				  baseprice: '200', 
+				  price: '200', 
+				  stocked: true, 
+				  name: 'Подбор поощрений призового фонда', 
+				  formula: 'multi',
+				  arrOfVlue:'none',
+				  multinumber:1, 
+				  needit: false
+				  },			  
+			  {
+				  unicname:'bonus_create',
+				  indexid:44,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'закупка/изготовление поощрений',
+				  baseprice: '19000', 
+				  price: '19000',
+				  stocked: true, 
+				  name: 'Закупка/изготовление поощрений', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
 			  
-			  {unicname:'brending_goods',indexid:45,ischecked:false,category: 'Призовой фонд', baseprice: '0.15', price: '0', stocked: true, name: 'Брендирование поощрений', formula: 'multi',multinumber:1, needit: false},			  
-			  {unicname:'logistic',indexid:46,ischecked:false,category: 'Призовой фонд', baseprice: '2850', price: '0', stocked: true, name: 'Логистика (хранение, упаковка)', formula: 'multi',multinumber:1, needit: false},
-			  {unicname:'delivery',indexid:47,ischecked:false,category: 'Призовой фонд', baseprice: '600', price: '0', stocked: true, name: 'Доставка', formula: 'multi',multinumber:1, needit: false},
+			  {
+				  unicname:'brending_goods',
+				  indexid:45,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'брендирование поощрений',
+				  baseprice: '0.15', 
+				  price: '2850', 
+				  stocked: true, 
+				  name: 'Брендирование поощрений', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'logistic',
+				  indexid:46,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд',
+				  showwordprefix:'от', 
+				  showwordsuffix:'€', 
+				  comment:'логистика (хранение, упаковка)', 
+				  baseprice: '2100', 
+				  price: '0', 
+				  stocked: true, 
+				  name: 'Логистика (хранение, упаковка)', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'delivery',
+				  indexid:47,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'от',
+				  showwordsuffix:'€', 
+				  comment:'доставка', 
+				  baseprice: '600', 
+				  price: '600', 
+				  stocked: true, 
+				  name: 'Доставка', 
+				  arrOfVlue:[{valOf:1,strInfo:'Доставка дистрибьюторам'},{valOf:2,strInfo:'Адресная доставка победителям'}],
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
 			  
-			  {unicname:'bonus_for_disr',indexid:49,ischecked:false,category: 'Призовой фонд', baseprice: '300', price: '0', stocked: true, name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', formula: 'multi',multinumber:1, needit: false}	
+			  {
+			  unicname:'bonus_for_disr',
+			  indexid:49,
+			  usehiddencheckbox:false,
+			  ischecked:false,
+			  category: 'Призовой фонд', 
+			  showwordprefix:'от', 
+			  showwordsuffix:'', 
+			  comment:'Рассчет осуществляется на основе количества дистрибъюторов указаного во Вводном разделе', 
+			  baseprice: '300', 
+			  price: '0', 
+			  stocked: true, 
+			  name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', 
+			  arrOfVlue:'none',
+			  formula: 'multi',
+			  multinumber:1, 
+			  needit: false}	
 			  ]
 	}
   } 
@@ -694,13 +835,14 @@ quanticont:1000,
 	///////////
 	// render
 	render(content) { 
+
+
 		//////////////
 		// get it form db
-		// Первый раздел - вводные данные
-		var PRODUCTS = [
-			
-			//1
-			{
+		// Первый раздел - вводные данныеoldArray
+		var PRODUCTS = this.state.resultPrices;/* [ 
+		//1
+			  {
 				unicname:'period',
 				indexid:1,
 				usehiddencheckbox:true,
@@ -708,78 +850,438 @@ quanticont:1000,
 				category: 'Вводные данные: общая информация о программе лояльности', 
 				showwordprefix:'', 
 				showwordsuffix:'', 
-				comment:'ориентировочное время проведения Программы', 
+				comment:'ориентировочное время проведения Программы',
+				baseprice: '0', 
 				price: '', 
 				stocked: true, 
 				name: 'Укажите длительность Программы', 
-				arrOfVlue:[{valOf:1,strInfo:'1-3 месяца'},{valOf:2,strInfo:'4-6 месяцев'},{valOf:5,strInfo:'более 6 месяцев'}],
+			  	arrOfVlue:[{valOf:1,strInfo:'1-3 месяца'},{valOf:2,strInfo:'4-6 месяцев'},{valOf:5,strInfo:'более 6 месяцев'}],
 				formula: 'select',
-				multinumber:1
-			},
+				multinumber:1, 
+				needit: false
+				},
+		//2
+			  {
+				unicname:'disributors_quantity',
+				indexid:2,
+				usehiddencheckbox:true,
+				ischecked:false,
+				category: 'Вводные данные: общая информация о программе лояльности',
+				showwordprefix:'',
+				showwordsuffix:'', 
+				comment:'кол-во дистрибьюторов',
+				baseprice: '0', 
+				price: '',
+				stocked: false, 
+				name: 'Укажите количество дистрибъюторов', 
+				arrOfVlue:'none',
+				formula: 'set_distributor_number',
+				multinumber:1, 
+				needit: false
+			  },
+			//3
+			  {
+				  unicname:'budget',
+				  indexid:3,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Вводные данные: общая информация о программе лояльности',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'ориентировочный бюджет Программы',
+				  baseprice: '0', 
+				  price: '', 
+				  stocked: false, 
+				  name: 'Ориентировочный бюджет Программы', 
+				  arrOfVlue:50000, 
+				  formula: 'set_distributor_number',
+				  multinumber:50000,
+				  needit: false
+				  },
+			//4
+			  {
+				  unicname:'region',
+				  indexid:4,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Вводные данные: общая информация о программе лояльности',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'some comment text', 
+				  baseprice: '0',
+				  price: '', 
+				  stocked: true,
+				  name: 'География программы',	  
+				  arrOfVlue:[{valOf:1,strInfo:'Беларусь'},{valOf:2,strInfo:'Россия'},{valOf:2,strInfo:'Украина'},{valOf:3,strInfo:'Казахстан'},{valOf:4,strInfo:'Другие страны'},{valOf:4,strInfo:'Три страны Прим. Украина, Россия, Казахстан'}], 
+				  formula: 'set_geo',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+	  //ВТОРОЙ раздел - разработка программы				  
+			  
+				{
+				  unicname:'rooles',
+				  indexid:10,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Разработка программы: услуги агентства', 
+				  showwordprefix:'от', 
+				  showwordsuffix:'€', 
+				  comment:'условия программы', 
+				  baseprice: '550', 
+				  price: '550', 
+				  stocked: true, 
+				  name: 'условия программы',
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'programmdiv',
+				  indexid:11,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Разработка программы: услуги агентства',
+				  showwordprefix:'от', 
+				  showwordsuffix:'€',	
+				  comment:'концепция со слоганом, название',
+				  baseprice: '200', 
+				  price: '200', 
+				  stocked: true, 
+				  name: 'концепция со слоганом, название',
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'presentation',
+				  indexid:12,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Разработка программы: услуги агентства', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  baseprice: '150', 
+				  comment:'презентация для дистрибьюторов',
+				  price: '150', 
+				  stocked: true, 
+				  name: 'Презентация для дистрибьюторов',
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'agency',
+				  indexid:13,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Разработка программы: услуги агентства', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€',
+				  comment:'инструкция для дистрибьюторов', 
+				  baseprice: '100', 
+				  price: '100', 
+				  stocked: true, 
+				  name: 'инструкция для дистрибьюторов', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false},
 			
-			//2
-	  {unicname:'disributors_quantity',indexid:2,
-	  usehiddencheckbox:true,ischecked:false,category: 'Вводные данные: общая информация о программе лояльности', 
-	  showwordprefix:'', showwordsuffix:'', comment:'кол-во дистрибьюторов', price: '', stocked: false, name: 'Укажите количество дистрибъюторов', arrOfVlue:1, formula: 'set_distributor_number',multinumber:1},			
-	  
-	  //3
-	  {unicname:'budget',indexid:3,usehiddencheckbox:true,ischecked:false,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'ориентировочный бюджет Программы', price: '', stocked: false, name: 'Ориентировочный бюджет Программы', arrOfVlue:50000, formula: 'set_distributor_number',multinumber:50000},
+			//ТРЕТИЙ раздел  
+			  {
+				  unicname:'funcplat',
+				  indexid:21,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Платформа для Программы лояльности:',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'website',
+				  baseprice: '7800',
+				  price: '7800', 
+				  stocked: false, 
+				  name: 'Платформа для Программы (website)', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  {unicname:'plat',indexid:22,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '', stocked: false, name: 'Функционал регистрации участников', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'turn',indexid:23,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',  showwordprefix:'', showwordsuffix:'', comment:'', baseprice: '0',price: '', stocked: false, name: 'Функционал загрузки оборотов', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'usernote',indexid:24,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '', stocked: false, name: 'Нотификация участников о результатах (e-mail)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			  {unicname:'somefunc',indexid:25,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:',   showwordprefix:'', showwordsuffix:'', comment:'',baseprice: '0',price: '', stocked: false, name: 'Платформа для Программы лояльности: (website)', arrOfVlue:'none',formula: 'multi',multinumber:1, needit: false},
+			
+ //ЧЕТВЕРТЫЙ раздел
+			  {
+				  unicname:'designweb',
+				  indexid:31,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€',
+				  comment:'дизайн для платформы', 
+				  baseprice: '1500',
+				  price: '1500', 
+				  stocked: true, 
+				  name: 'Дизайн для платформы (website)', 
+				  arrOfVlue:'none', 
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  {
+				  unicname:'designadvert',
+				  indexid:32,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'дизайн рекламного макета Программы',
+				  baseprice: '150',
+				  price: '150', 
+				  stocked: true, 
+				  name: 'Дизайн рекламного макета Программы', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },			  
+				{
+					unicname:'price_for_banner',
+					indexid:33,
+					usehiddencheckbox:false,
+					ischecked:false,
+					category: 'Дизайн key visual:',
+					showwordprefix:'', 
+					showwordsuffix:'€', 
+					comment:'дизайн баннеров для дистрибьюторов',
+					baseprice: '30',
+					price: '180', 
+					stocked: true, 
+					name: 'Дизайн баннеров для дистрибьюторов', 
+					arrOfVlue:'none',
+					formula: 'multi',
+					multinumber:5, 
+					needit: false
+					},
+			  {
+				  unicname:'count_for_banner',
+				  indexid:34,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'количество баннеров',
+				  baseprice: '0',
+				  price: '', 
+				  stocked: true, 
+				  name: 'Количество баннеров', 
+				  arrOfVlue:5,
+				  formula: 'multi',
+				  multinumber:5, 
+				  needit: false
+				  },
+			  {
+				  unicname:'gesignmaket',
+				  indexid:35,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'дизайн рекламного макета Программы',
+				  baseprice: '1500',
+				  price: '1500', 
+				  stocked: true, 
+				  name: 'Дизайн рекламного макета Программы', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  {
+				 
 
-	  //4
-		  
-		  
-		  
-		  
-	  {
-		  unicname:'region',indexid:4,
-	  usehiddencheckbox:true,
-	  ischecked:false,category: 'Вводные данные: общая информация о программе лояльности', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'География программы', arrOfVlue:[{valOf:1,strInfo:'Беларусь'},{valOf:2,strInfo:'Россия'},{valOf:2,strInfo:'Украина'},{valOf:3,strInfo:'Казахстан'},{valOf:4,strInfo:'Другие страны'},{valOf:4,strInfo:'Три страны Прим. Украина, Россия, Казахстан'}], formula: 'set_geo',multinumber:1},
-	  
-	  //ВТОРОЙ раздел - разработка программы
-		  
-		//  
-	  {
-unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'условия программы', price: '550', stocked: true, name: 'Условия программы', arrOfVlue:'none', formula: 'none',multinumber:1},
-	  
-	  //4
-	  {unicname:'programmdiv',indexid:11,usehiddencheckbox:false,ischecked:false,category: 'Разработка программы: услуги агентства', showwordprefix:'от', showwordsuffix:'€', comment:'концепция со слоганом, название', price: '200', stocked: true, name: 'Концепция со слоганом, название', arrOfVlue:'none', formula: 'none',multinumber:1},
-	  
-	  //5
-	  {unicname:'presentation',indexid:12,usehiddencheckbox:false,ischecked:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'презентация для дистрибьюторов', price: '150', stocked: true, name: 'Презентация для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:1},
-	  
-	  //6
-	  {unicname:'agency',indexid:13,usehiddencheckbox:false,ischecked:false,category: 'Разработка программы: услуги агентства', showwordprefix:'', showwordsuffix:'€', comment:'инструкция для дистрибьюторов', price: '100', stocked: true, name: 'Инструкция для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:1},
-	 
-	//ТРЕТИЙ раздел 
-	 {unicname:'funcplat',indexid:21,usehiddencheckbox:false,ischecked:false,category: 'Платформа для Программы лояльности:', showwordprefix:'от', showwordsuffix:'€', comment:'функционал регистрации участников, функционал загрузки оборотов, нотификация участников о результатах (e-mail), техническая поддержка', price: '7800', stocked: false, name: 'Платформа для Программы (website)', arrOfVlue:'none', formula: 'none',multinumber:1},	 
-	 {unicname:'plat',indexid:22,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал регистрации участников', arrOfVlue:'none', formula: 'none',multinumber:1},
-	 {unicname:'turn',indexid:23,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал загрузки оборотов', arrOfVlue:'none', formula: 'none',multinumber:1},
-	 {unicname:'usersnotification',indexid:24,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - нотификация участников о результатах (e-mail)', arrOfVlue:'none', formula: 'none',multinumber:1},
-	 {unicname:'regfuncional',indexid:25,usehiddencheckbox:true,ischecked:false,category: 'Платформа для Программы лояльности:', showwordprefix:'', showwordsuffix:'', comment:'', price: '', stocked: false, name: ' - функционал регистрации участников', arrOfVlue:'none', formula: 'none',multinumber:1},
-		 
-	 //ЧЕТВЕРТЫЙ раздел
-	  {unicname:'designweb',indexid:31,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн для платформы', price: '1500', stocked: true, name: 'Дизайн для платформы (website)', arrOfVlue:'none', formula: 'none',multinumber:1},
-		  
-	  {unicname:'designadvert',indexid:32,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'Дизайн рекламного макета Программы', price: '150', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none', formula: 'none',multinumber:1},
-	  
-	  {unicname:'price_for_banner',indexid:33,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн баннеров для дистрибьюторов', price: '1800', stocked: true, name: 'Дизайн баннеров для дистрибьюторов', arrOfVlue:'none', formula: 'none',multinumber:5},
-	  {unicname:'count_for_banner',indexid:34,usehiddencheckbox:true,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'', comment:'some comment text', price: '', stocked: true, name: 'Количество баннеров', arrOfVlue:5, formula: 'none',multinumber:5},
-	  {unicname:'gesignmaket',indexid:35,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'some comment text', price: '1500', stocked: true, name: 'Дизайн рекламного макета Программы', arrOfVlue:'none', formula: 'none',multinumber:1},
-	  {unicname:'designsetificats',indexid:36,usehiddencheckbox:false,ischecked:false,category: 'Дизайн key visual: ', showwordprefix:'', showwordsuffix:'€', comment:'дизайн сертификатов победителям', price: '200', stocked: true, name: 'Дизайн сертификатов победителям (до 3 макетов)', arrOfVlue:'none', formula: 'none',multinumber:1},  
-		
-	  //ПРИЗОВОЙ фонд
-	   {unicname:'users_quatity',indexid:41,usehiddencheckbox:true,ischecked:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'', comment:'укажите количество участников ИЛИ количество победителей', price: '', stocked: true, name: 'Количество участников', arrOfVlue:1600, formula: 'multi',multinumber:1},
-	   {unicname:'vinners_quantity',indexid:42,usehiddencheckbox:true,ischecked:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'', comment:'укажите количество участников ИЛИ количество победителей', price: '', stocked: true, name: 'Количество победителей', arrOfVlue:500, formula: 'multi',multinumber:1},
-	   
-	   {unicname:'bonus_find',indexid:43,usehiddencheckbox:false,ischecked:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'подбор поощрений призового фонда', price: '200', stocked: true, name: 'Подбор поощрений призового фонда', arrOfVlue:'none', formula: 'none',multinumber:1},
-	   {unicname:'bonus_create',indexid:44,usehiddencheckbox:false,ischecked:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'закупка/изготовление поощрений', price: '19000', stocked: true, name: 'Закупка/изготовление поощрений', arrOfVlue:'none', formula: 'none',multinumber:1},	 
-	   
-	   {unicname:'brending_goods',indexid:45,usehiddencheckbox:false,ischecked:false,category: 'Призовой фонд', showwordprefix:'', showwordsuffix:'€', comment:'брендирование поощрений', price: '2850', stocked: true, name: 'Брендирование поощрений', arrOfVlue:'none', formula: 'none',multinumber:1},
-	   {unicname:'logistic',indexid:46,usehiddencheckbox:false,ischecked:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'логистика (хранение, упаковка)', price: '2100', stocked: true, name: 'Логистика (хранение, упаковка)', arrOfVlue:'none', formula: 'none',multinumber:1},
-	   	  {unicname:'delivery',indexid:47,usehiddencheckbox:false,ischecked:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'€', comment:'доставка', price: '600', stocked: true, name: 'Доставка', arrOfVlue:[{valOf:1,strInfo:'Доставка дистрибьюторам'},{valOf:2,strInfo:'Адресная доставка победителям'}], formula: 'multi',multinumber:1},
-	   
-	  {unicname:'bonus_for_disr',indexid:49,usehiddencheckbox:false,ischecked:false,category: 'Призовой фонд', showwordprefix:'от', showwordsuffix:'', comment:'Рассчет осуществляется на основе количества дистрибъюторов указаного во Вводном разделе', price: '300', stocked: true, name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', arrOfVlue:'none', formula: 'none',multinumber:1}
-		];
+				  unicname:'designsetificats',
+				  indexid:36,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Дизайн key visual:',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'дизайн сертификатов победителям',
+				  baseprice: '200',
+				  price: '200', 
+				  stocked: true, 
+				  name: 'Дизайн сертификатов победителям (до 3 макетов)', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			
+//пятый раздел				  
+			  {
+				  unicname:'users_quantity',
+				  indexid:41,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'',
+				  showwordsuffix:'', 
+				  comment:'укажите количество участников ИЛИ количество победителей',
+				  baseprice: '0', 
+				  price: '', 
+				  stocked: true, 
+				  name: 'Количество участников', 
+				  arrOfVlue:1600, 
+				  formula: 'multi',
+				  multinumber:1600, 
+				  needit: false
+				},	
+				  
+			  {
+				  unicname:'vinners_quantity',
+				  indexid:42,
+				  usehiddencheckbox:true,
+				  ischecked:false,
+				  category: 'Призовой фонд',
+				  showwordprefix:'', 
+				  showwordsuffix:'', 
+				  comment:'укажите количество участников ИЛИ количество победителей',
+				  baseprice: '0', 
+				  price: '', 
+				  stocked: true, 
+				  name: 'Количество победителей', 
+				  arrOfVlue:500, 
+				  formula: 'multi',
+				  multinumber:500, 
+				  needit: false
+				  },
+			  
+			  {
+				  unicname:'bonus_find',
+				  indexid:43,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'подбор поощрений призового фонда',
+				  baseprice: '200', 
+				  price: '200', 
+				  stocked: true, 
+				  name: 'Подбор поощрений призового фонда', 
+				  formula: 'multi',
+				  arrOfVlue:'none',
+				  multinumber:1, 
+				  needit: false
+				  },			  
+			  {
+				  unicname:'bonus_create',
+				  indexid:44,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд',
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'закупка/изготовление поощрений',
+				  baseprice: '19000', 
+				  price: '19000',
+				  stocked: true, 
+				  name: 'Закупка/изготовление поощрений', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  
+			  {
+				  unicname:'brending_goods',
+				  indexid:45,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'', 
+				  showwordsuffix:'€', 
+				  comment:'брендирование поощрений',
+				  baseprice: '0.15', 
+				  price: '2850', 
+				  stocked: true, 
+				  name: 'Брендирование поощрений', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'logistic',
+				  indexid:46,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд',
+				  showwordprefix:'от', 
+				  showwordsuffix:'€', 
+				  comment:'логистика (хранение, упаковка)', 
+				  baseprice: '2100', 
+				  price: '0', 
+				  stocked: true, 
+				  name: 'Логистика (хранение, упаковка)', 
+				  arrOfVlue:'none',
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+				  
+			  {
+				  unicname:'delivery',
+				  indexid:47,
+				  usehiddencheckbox:false,
+				  ischecked:false,
+				  category: 'Призовой фонд', 
+				  showwordprefix:'от',
+				  showwordsuffix:'€', 
+				  comment:'доставка', 
+				  baseprice: '600', 
+				  price: '600', 
+				  stocked: true, 
+				  name: 'Доставка', 
+				  arrOfVlue:[{valOf:1,strInfo:'Доставка дистрибьюторам'},{valOf:2,strInfo:'Адресная доставка победителям'}],
+				  formula: 'multi',
+				  multinumber:1, 
+				  needit: false
+				  },
+			  
+			  {
+			  unicname:'bonus_for_disr',
+			  indexid:49,
+			  usehiddencheckbox:false,
+			  ischecked:false,
+			  category: 'Призовой фонд', 
+			  showwordprefix:'от', 
+			  showwordsuffix:'', 
+			  comment:'Рассчет осуществляется на основе количества дистрибъюторов указаного во Вводном разделе', 
+			  baseprice: '300', 
+			  price: '0', 
+			  stocked: true, 
+			  name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', 
+			  arrOfVlue:'none',
+			  formula: 'multi',
+			  multinumber:1, 
+			  needit: false}	
+			  ]; */
 		var buttonListElements = [];
 		var lastCategory = null;
 		//var i = 1;
@@ -800,7 +1302,7 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setBudget.bind(this,index)}  value={this.state.budget}/><button  className="mleft100"  onClick={this.setBudget.bind(this,index)} value={this.state.budget}>Рассчитать</button></div>);
 				} else if (product.unicname=='count_for_banner') {
 					usersControlFormula.push(<div><input className="width20" type="text"  onChange={this.setBannerQuantiy.bind(this,index)}  value={this.state.resultPrices[index].multinumber}/></div>);				
-				} else if (product.unicname=='users_quatity') {
+				} else if (product.unicname=='users_quantity') {
 					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setUserQuantiy.bind(this,index)}  value={this.state.resultPrices[index].multinumber}/></div>);				
 				} else if (product.unicname=='vinners_quantity') {
 					//usersControlFormula.push(<div><input className="width70 noforc" readonly onChange={this.setVinnerQuantiy.bind(this,index)}  value={this.state.resultPrices[index].multinumber}/></div>);
@@ -992,6 +1494,10 @@ unicname:'rooles',indexid:10,usehiddencheckbox:false,ischecked:false,category: '
 								  newArrForFormula[index].ischecked = true;
 								  break;
 							  case "Дизайн key visual:":
+								  newArrForFormula[index].needit = true;
+								  newArrForFormula[index].ischecked = true;
+								  break;
+							    case "Призовой фонд":
 								  newArrForFormula[index].needit = true;
 								  newArrForFormula[index].ischecked = true;
 								  break;
