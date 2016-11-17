@@ -407,7 +407,7 @@ quanticont:1000,
 			  {unicname:'logistic',indexid:46,category: 'Призовой фонд', baseprice: '2850', price: '0', stocked: true, name: 'Логистика (хранение, упаковка)', formula: 'multi',multinumber:1, needit: false},
 			  {unicname:'delivery',indexid:47,category: 'Призовой фонд', baseprice: '600', price: '0', stocked: true, name: 'Доставка', formula: 'multi',multinumber:1, needit: false},
 			  
-			  {unicname:'bonus_for_disr',indexid:49,category: 'Призовой фонд', baseprice: '300', price: '0', stocked: true, name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', formula: 'multi',multinumber:1, needit: false}	
+			  {unicname:'bonus_for_disr',indexid:49,category: 'Призовой фонд', baseprice: '600', price: '600', stocked: true, name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', formula: 'multi',multinumber:1, needit: false}	
 			  ]
 	}
   } 

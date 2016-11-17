@@ -810,8 +810,8 @@ class DankButton extends React.Component {
 			  showwordprefix:'от', 
 			  showwordsuffix:'', 
 			  comment:'Рассчет осуществляется на основе количества дистрибъюторов указаного во Вводном разделе', 
-			  baseprice: '300', 
-			  price: '0', 
+			  baseprice: '600', 
+			  price: '600', 
 			  stocked: true, 
 			  name: 'Поощрения сотрудников дистрибьюторов (супервайзеров)', 
 			  arrOfVlue:'none',
@@ -859,7 +859,7 @@ class DankButton extends React.Component {
 					//alert('somres=');
 					
 					this.state.value = this.state.resultPrices[index].multinumber;
-					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setBudget.bind(this,index)}  value={this.state.budget}/><button  className="mleft100"  onClick={this.setBudget.bind(this,index)} value={this.state.budget}>Рассчитать</button></div>);
+					usersControlFormula.push(<div><input className="width70" type="text"  onChange={this.setBudgetInStateOnly.bind(this,index)}  value={this.state.budget}/><button  className="mleft100"  onClick={this.setBudget.bind(this,index)} value={this.state.budget}>Рассчитать</button></div>);
 				} else if (product.unicname=='count_for_banner') {
 					usersControlFormula.push(<div><input className="width20" type="text"  onChange={this.setBannerQuantiy.bind(this,index)}  value={this.state.resultPrices[index].multinumber}/></div>);				
 				} else if (product.unicname=='users_quantity') {
@@ -1061,6 +1061,22 @@ class DankButton extends React.Component {
 		  this.recountIt();
 	}
 	
+	setBudgetInStateOnly(indexinarray,event){
+				  var valueForBudget = event.target.value;
+		   	this.setState({ budget: valueForBudget });
+		   	this.setState({ allAmount: 0 });
+		   	this.setState({ billDev: 0 });
+		   	this.setState({ billPlatform: 0 });
+		   	this.setState({ billDesign: 0 });
+		   	this.setState({ billBonus: 0 });
+
+	/* 	participant:1600,
+		coverage:"высокое",
+		quanticont:1000,
+		vinnerquantity:500, */
+			
+	}	
+		
 	setBudget(indexinarray,event){
 		  var valueForBudget = event.target.value;
 		  var newArrForFormula = this.state.resultPrices;
@@ -1114,12 +1130,55 @@ promise
 		  console.log("budget=" + this.state.budget);
 		  console.log("Кол-во дистрибъюторов distributorQuantity=" + distributorQuantity);
 		  console.log("this.state.budget=" + this.state.budget);
-		var Y =  this.state.budget - (this.state.billDev  + this.state.billPlatform + this.state.billDesign + distributorQuantity*600 + 3000 + 200);
+		  //var additional_inner = 3000 + 15*vinnerQuantity
+		var Y =  this.state.budget - (this.state.billDev  + this.state.billPlatform + this.state.billDesign + distributorQuantity*600 + 200);
+		//3000 добавляем в сектор закупка/изготовление поощрений и туда же vinnerQuantity*15
 		console.log("Y="+Y);
-		var vinnerQuantity = parseInt(Y /103);
-		console.log("Количество победителей vinnerQuantity=" + vinnerQuantity);
+		
+		//HOW we get winner quantity
+		// Y -= 3000 fo low
+		// 38 + 5.7 + 5 + 2 + 15 = 65.7
+		//!!!!!!!!! IMPORTANT Y-=3000;
+		Y-=3000;
+		var vinnerQuantity = parseInt(Y/65.7);
+		
 		var userQuantity = vinnerQuantity*3;
-		console.log("Количество победителей userQuantity=" + userQuantity);
+		console.log("Количество участников userQuantity=" + userQuantity);
+		
+		
+		console.log("Количество победителей vinnerQuantity=" + vinnerQuantity);
+		
+		var hiddenPay = vinnerQuantity*15 + 3000;
+		console.log("hiddenPay=" + hiddenPay);
+		
+		var bonusLowBuh = vinnerQuantity*38;
+		console.log("Закупка/изготовление поощрений bonusLowBuh=" + bonusLowBuh);
+		
+		var setBrand = vinnerQuantity*5.7;
+		console.log("Брендирование поощрений setBrand=" + setBrand);
+		
+		var logisticFrom2100 = vinnerQuantity*5;
+		console.log("Брендирование поощрений logisticFrom2100=" + logisticFrom2100);
+		
+		var deliveryIn = vinnerQuantity*2;
+			console.log("Адресная доставка vinnerQuantity=" + vinnerQuantity);
+		
+			
+			 var newPriceOnVinnerQuantity = this.state.resultPrices;
+			 newPriceOnVinnerQuantity.map(function(currentRow,index) {
+			   if (currentRow.unicname == 'users_quantity') {
+				  newPriceOnVinnerQuantity[index].multinumber = userQuantity;		 
+			   }			   
+			   
+			   if (currentRow.unicname == 'vinners_quantity') {
+				  newPriceOnVinnerQuantity[index].multinumber = vinnerQuantity;		 
+			   }
+		   });
+			  this.setState({resultPrices: newPriceOnVinnerQuantity });
+			  this.setState({participant: userQuantity });
+			  this.setState({vinnerquantity: vinnerQuantity });
+			  
+			  this.recountIt();		
     },
     error => {
       alert("Что-то пошло не так. Перезагрузите страницу и пересчитайте результат."); 
@@ -1195,7 +1254,7 @@ promise
 	recountIt() {
 		console.log('set it at last');
 		var forAmount = 0;
-		var bonus_for_vinners = this.state.vinnerquantity*38;
+		var bonus_for_vinners = this.state.vinnerquantity*38;// +  this.state.vinnerquantity*15 + 3000 ;
 		var brending_goods_price = bonus_for_vinners*0.15;
 		var logistic_price = this.state.vinnerquantity*5;
 		if (logistic_price < 2100) {
@@ -1206,6 +1265,8 @@ promise
 		if (this.state.delivery_format == 1) {
 			if (this.state.vinnerquantity * 2 > 600) {
 				delivery_price = this.state.vinnerquantity*2;//delivery only to destributors
+			} else {
+				console.log("too low quantity");
 			}
 		} else {
 			delivery_price = this.state.vinnerquantity*40;//delivery to vinners address 
@@ -1235,7 +1296,13 @@ promise
 			}
 		}
 	});
-		
+		alert("forAmount1="+forAmount);
+		var hidComission = this.state.vinnerquantity*15;
+		alert("hidComission="+hidComission);
+		hidComission += 3000;
+		alert("hidComission="+hidComission);
+		forAmount = (parseFloat(forAmount )+ parseFloat(hidComission)).toFixed(2);
+		alert("forAmount2="+forAmount);
 		this.setState({allAmount: forAmount});
 		this.setState({ resultPrices: onUpdateAmountArr });
 	this.makeBill();
@@ -1273,6 +1340,8 @@ promise
 							}
 					}
 				});
+				//hidden paymant
+				billBonus = parseFloat(billBonus + (this.state.vinnerquantity*15 + 3000) ).toFixed(2);
 				this.setState({billDev:billDev});
 				this.setState({billPlatform:billPlatform});
 				this.setState({billDesign:billDesign});
