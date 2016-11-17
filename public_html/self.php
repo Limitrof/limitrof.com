@@ -116,6 +116,18 @@ float: left;
 	text-align: center;
 	padding-top:13px;
 }
+.itogo_sell {
+	background-color:#47be71;
+	color:white;
+	width:120px;
+	margin-top: -15px;
+	height:50px;
+	border-radius:7px;
+	font-size:18px;
+	font-weight:bold;
+	text-align: center;
+	padding-top:13px;
+}
 label{
 display:flex;
 }
@@ -187,6 +199,9 @@ color:#448bd8;
 .mleft100{
 margin-left:70px;
 margin-right:-100px;
+}
+.floatLeft{
+float:left;
 }
 </style>
 <script>
@@ -425,7 +440,7 @@ class DankButton extends React.Component {
 				  category: 'Вводные данные: общая информация о программе лояльности',
 				  showwordprefix:'', 
 				  showwordsuffix:'', 
-				  comment:'ориентировочный бюджет Программы',
+				  comment:'рекомендуем оптимальный бюджет ',
 				  baseprice: '0', 
 				  price: '', 
 				  stocked: false, 
@@ -889,13 +904,13 @@ class DankButton extends React.Component {
 				var itogo='Итого: ';	  
 					switch (lastCategory) {
 								case "Разработка программы: услуги агентства":
-					buttonListElements.push(<div><div  className="itogo">{this.state.billDev}</div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
+					buttonListElements.push(<div><div  className="itogo">ИТОГО: <span>{this.state.billDev}</span></div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
 								  break;	   
 							  case "Платформа для Программы лояльности:":
-					buttonListElements.push(<div><div  className="itogo">{this.state.billPlatform}</div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
+					buttonListElements.push(<div><div  className="itogo">ИТОГО: <span>{this.state.billPlatform}</span></div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
 								  break;
 							  case "Дизайн key visual:":
-					buttonListElements.push(<div><div  className="itogo">{this.state.billDesign}</div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
+					buttonListElements.push(<div><div  className="itogo">ИТОГО: <span>{this.state.billDesign}</span></div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
 								  break;
 								default:
 					buttonListElements.push(<div><div className="row bcwhite margintop80"><div className="col-md-12 blueColor_h80_pt5"><h3>{product.category}</h3></div></div></div>);
@@ -945,7 +960,7 @@ class DankButton extends React.Component {
 				  				if( (arrSize-1) == index){
 					
 						buttonListElements.push(<div><div className="itogo">*Призовой фонд
-(включая налоги (для РФ при условии, что фактическая стоимость поощрения не превышает 3500 руб.), комиссию агентства, юридическое и бухгалтерское сопровождение) {this.state.billBonus}</div></div>);
+(включая налоги (для РФ при условии, что фактическая стоимость поощрения не превышает 3500 руб.), комиссию агентства, юридическое и бухгалтерское сопровождение) <br /><div className="floatLeft">ИТОГО: {this.state.billBonus}</div></div></div>);
 				}
 				  
 				 // i++;
@@ -985,7 +1000,7 @@ class DankButton extends React.Component {
 						
 						<hr/>
 						<div className="row colorblue">
-							<div className="col-md-9">Охват (кол-во участников)</div>
+							<div className="col-md-9">Охват (количество участников)</div>
 							<div className="col-md-3">{this.state.participant}</div>
 						</div>
 						<div className="row colorblue">
@@ -1131,7 +1146,13 @@ promise
 		  console.log("Кол-во дистрибъюторов distributorQuantity=" + distributorQuantity);
 		  console.log("this.state.budget=" + this.state.budget);
 		  //var additional_inner = 3000 + 15*vinnerQuantity
-		var Y =  this.state.budget - (this.state.billDev  + this.state.billPlatform + this.state.billDesign + distributorQuantity*600 + 200);
+		
+		
+		// OLD FORMULA PART 1:   var Y =  this.state.budget - (this.state.billDev  + this.state.billPlatform + this.state.billDesign + distributorQuantity*600 + 200);
+		
+		  var vinnerQuantity =  parseInt(this.state.budget - (this.state.billDev  + this.state.billPlatform + this.state.billDesign + distributorQuantity*600 + 200 + 3000))/66;
+		  alert("vinnerQuantity="+vinnerQuantity);
+		
 		//3000 добавляем в сектор закупка/изготовление поощрений и туда же vinnerQuantity*15
 		console.log("Y="+Y);
 		
@@ -1139,8 +1160,8 @@ promise
 		// Y -= 3000 fo low
 		// 38 + 5.7 + 5 + 2 + 15 = 65.7
 		//!!!!!!!!! IMPORTANT Y-=3000;
-		Y-=3000;
-		var vinnerQuantity = parseInt(Y/65.7);
+		// OLD FORMULA PART 2:    Y-=3000;
+		//var vinnerQuantity = parseInt(Y/65.7);
 		
 		var userQuantity = vinnerQuantity*3;
 		console.log("Количество участников userQuantity=" + userQuantity);
@@ -1154,11 +1175,11 @@ promise
 		var bonusLowBuh = vinnerQuantity*38;
 		console.log("Закупка/изготовление поощрений bonusLowBuh=" + bonusLowBuh);
 		
-		var setBrand = vinnerQuantity*5.7;
+		var setBrand = bonusLowBuh*0.15;
 		console.log("Брендирование поощрений setBrand=" + setBrand);
 		
 		var logisticFrom2100 = vinnerQuantity*5;
-		console.log("Брендирование поощрений logisticFrom2100=" + logisticFrom2100);
+		console.log("Логистика logisticFrom2100=" + logisticFrom2100);
 		
 		var deliveryIn = vinnerQuantity*2;
 			console.log("Адресная доставка vinnerQuantity=" + vinnerQuantity);
