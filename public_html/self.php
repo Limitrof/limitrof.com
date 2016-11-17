@@ -1255,7 +1255,7 @@ promise
 		console.log('set it at last');
 		var forAmount = 0;
 		var bonus_for_vinners = this.state.vinnerquantity*38;// +  this.state.vinnerquantity*15 + 3000 ;
-		var brending_goods_price = bonus_for_vinners*0.15;
+		var brending_goods_price = parseFloat(bonus_for_vinners*0.15);
 		var logistic_price = this.state.vinnerquantity*5;
 		if (logistic_price < 2100) {
 			logistic_price = 2100;
@@ -1284,7 +1284,7 @@ promise
 				currentRow.price = bonus_for_vinners;
 			} else if (currentRow.unicname == 'brending_goods') {
 				forAmount =  parseFloat(forAmount) + brending_goods_price; 
-				currentRow.price = brending_goods_price;
+				currentRow.price = (brending_goods_price).toFixed(2);
 			} else if (currentRow.unicname == 'logistic') {
 				forAmount =  parseFloat(forAmount) + logistic_price; 
 				currentRow.price = logistic_price;
@@ -1296,13 +1296,9 @@ promise
 			}
 		}
 	});
-		alert("forAmount1="+forAmount);
 		var hidComission = this.state.vinnerquantity*15;
-		alert("hidComission="+hidComission);
 		hidComission += 3000;
-		alert("hidComission="+hidComission);
 		forAmount = (parseFloat(forAmount )+ parseFloat(hidComission)).toFixed(2);
-		alert("forAmount2="+forAmount);
 		this.setState({allAmount: forAmount});
 		this.setState({ resultPrices: onUpdateAmountArr });
 	this.makeBill();
