@@ -370,9 +370,9 @@ class DankButton extends React.Component {
 		billPlatform:0,
 		billDesign:0,
 		billBonus:0,
-participant:1600,
-coverage:"высокое",
-quanticont:1000,
+		participant:1600,
+		coverage:"высокое",
+		quanticont:1000,
 		vinnerquantity:500, //vinner quantity default
 		delivery_format:1, //two format delivery: 1 = to distributor, 2 = to address 
 		resultPrices:[  
